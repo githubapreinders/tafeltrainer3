@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cronentries>
+	<cron>
+		<url>/tafeltrainer3/src/afr/tafeltrainer3/server/MailCronServlet</url>
+		<description>Deze job controleert elke week of er nog ouders gemaild
+			moeten worden
+		</description>
+		<schedule>every sunday 22:00</schedule>
+	</cron>
+
+
+	<cron>
+		<url>/tafeltrainer3/src/afr/tafeltrainer3/server/MailCronServletThree</url>
+		<description>Deze job controleert elke derde week van de maand 	</description>
+		<schedule>third sunday 22:30</schedule>
+	</cron>
+
+	<cron>
+		<url>/tafeltrainer3/src/afr/tafeltrainer3/server/MailCronServletTwo</url>
+		<description>Deze job controleert elke eerste week van de maand 	</description>
+		<schedule>first sunday 22:30</schedule>
+	</cron>
+	
+</cronentries>
+

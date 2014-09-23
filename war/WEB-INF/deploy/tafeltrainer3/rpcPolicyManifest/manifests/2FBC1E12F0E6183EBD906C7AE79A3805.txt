@@ -1,0 +1,2 @@
+serviceClass: afr.tafeltrainer3.shared.SimpleService
+path: BA3CEE90139D7B0A6963102E97C53B02.gwt.rpc

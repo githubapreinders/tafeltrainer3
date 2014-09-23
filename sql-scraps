@@ -1,0 +1,6 @@
+//get the last row in a table
+select * from tafeltrainer.user where id = all(select max(id)from tafeltrainer.user)
+
+//get the first row in a table
+select * from tafeltrainer.user where id = all(select min(id)from tafeltrainer.user)
+
