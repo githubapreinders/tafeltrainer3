@@ -27,10 +27,10 @@ private HorizontalPanel hpanelrow2;
 private HorizontalPanel hpanelrow3;
 private HorizontalPanel hpanelrow4;
 public String number;
-private Tafeltrainer3Gui gui;
+private Devicetype gui;
 private VerticalPanel vpanel;
 
-	public NumPadWidget(Tafeltrainer3Gui gui)
+	public NumPadWidget(Devicetype gui)
 	{
 		this.gui = gui;
 		vpanel = new VerticalPanel();
@@ -38,7 +38,7 @@ private VerticalPanel vpanel;
 		vpanel.setStyleName("numpadvpanel");
 		initWidget(vpanel);
 		hpanelrow1 = new HorizontalPanel();
-		hpanelrow1.setSpacing(2);
+		hpanelrow1.setSpacing(3);
 		hpanelrow1.setStyleName("numpadhpanel");
 		btn1 = new Button("1");
 		btn1.addClickHandler(new btnNumPadClickHandler());
@@ -57,7 +57,7 @@ private VerticalPanel vpanel;
 		hpanelrow2 = new HorizontalPanel();
 		
 		hpanelrow2.setStyleName("numpadhpanel");
-		hpanelrow2.setSpacing(2);
+		hpanelrow2.setSpacing(3);
 		btn4 = new Button("4");
 		btn4.addClickHandler(new btnNumPadClickHandler());
 		btn4.setStyleName("numpadbutton");
@@ -74,7 +74,7 @@ private VerticalPanel vpanel;
 		
 		hpanelrow3 = new HorizontalPanel();
 		hpanelrow3.setStyleName("numpadhpanel");
-		hpanelrow3.setSpacing(2);
+		hpanelrow3.setSpacing(3);
 		btn7 = new Button("7");
 		btn7.addClickHandler(new btnNumPadClickHandler());
 		btn7.setStyleName("numpadbutton");
@@ -91,7 +91,7 @@ private VerticalPanel vpanel;
 		
 		hpanelrow4 = new HorizontalPanel();
 		hpanelrow4.setStyleName("numpadhpanel");
-		hpanelrow4.setSpacing(2);
+		hpanelrow4.setSpacing(3);
 		btn11 = new Button("C");
 		btn11.addClickHandler(new btnNumPadClearClickHandler());
 		btn11.setStyleName("numpadbutton");
@@ -143,6 +143,10 @@ private VerticalPanel vpanel;
 		}
 		
 	}
+	
+	
+	
+	
 	
 	
 }

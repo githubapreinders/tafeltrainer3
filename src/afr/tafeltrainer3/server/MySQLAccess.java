@@ -625,7 +625,7 @@ public class MySQLAccess
 			int aantalopgaven = 0;
 			connect = getConn();
 
-			preparedStatement = connect.prepareStatement("select factor2,iscorrect,userid from tafeltrainer.opgave"
+			preparedStatement = connect.prepareStatement("select factor2,iscorrect,userid from tafeltrainer.opgave "
 					+ " where factor2 =" + factor + " and userid =" + id);
 			resultSet = preparedStatement.executeQuery();
 			while (resultSet.next())

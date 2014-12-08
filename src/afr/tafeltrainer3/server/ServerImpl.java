@@ -88,16 +88,14 @@ private MySQLAccess mySQLAccess = new MySQLAccess();
 		EventSuperuserFeedback esuf = new EventSuperuserFeedback();
 		try
 		{
-			ArrayList<TafelResult>tafelresultaten = mySQLAccess.getTafelResults(userid);
-			/**
-			 * int factor =2;
+			ArrayList<TafelResult>tafelresultaten = new ArrayList<TafelResult>();
+			int factor =2;
 			while(factor < 20)
 			{
 				TafelResult tr = mySQLAccess.getTafelResults_1(userid,factor);
 				tafelresultaten.add(tr);
 				factor++;
 			}
-			 */
 			SessionSummary pastsession = mySQLAccess.retrieveSession(userid);
 			Date thisdate = new Date(pastsession.timestamp.getTime());
 			String pastthreesessions = mySQLAccess.getSessionDatesHtmlString(userid);
@@ -122,15 +120,14 @@ private MySQLAccess mySQLAccess = new MySQLAccess();
 		EventUserFeedback euf = new EventUserFeedback();
 		try
 		{
-			ArrayList<TafelResult> tafelresultaten = mySQLAccess.getTafelResults(userid);
-			//ArrayList<TafelResult>tafelresultaten = new ArrayList<TafelResult>();
-			//int factor =2;
-			//while(factor < 20)
-			//{
-				//TafelResult tr = mySQLAccess.getTafelResults_1(userid,factor);
-				//tafelresultaten.add(tr);
-				//factor++;
-			//}
+			ArrayList<TafelResult>tafelresultaten = new ArrayList<TafelResult>();
+			int factor =2;
+			while(factor < 20)
+			{
+				TafelResult tr = mySQLAccess.getTafelResults_1(userid,factor);
+				tafelresultaten.add(tr);
+				factor++;
+			}
 			SessionSummary pastsession = mySQLAccess.retrieveSession(userid);
 			Date thisdate = new Date(pastsession.timestamp.getTime());
 			String pastthreesessions = mySQLAccess.getSessionDatesHtmlString(userid);
@@ -151,32 +148,7 @@ private MySQLAccess mySQLAccess = new MySQLAccess();
 		return euf;
 	}
 
-	//maakt statistieken van de voorgaande sessies
-	@Override 
-		public FeedbackContainer getFeedbackData(int userid )
-		{
-			ArrayList<TafelResult>tafelresultaten = mySQLAccess.getTafelResults(userid);
-			/**
-			 * int factor =2;
-			while(factor < 20)
-			{
-				TafelResult tr = mySQLAccess.getTafelResults_1(id,factor);
-				tafelresultaten.add(tr);
-				factor++;
-			}
-			 */
-			SessionSummary pastsession = mySQLAccess.retrieveSession(id);
-			Date thisdate = new Date(pastsession.timestamp.getTime());
-			String pastthreesessions = mySQLAccess.getSessionDatesHtmlString(id);
-			FeedbackContainer fiba = new FeedbackContainer((int)pastsession.howMuchOpgaven, pastsession.averageSpeed,
-			thisdate,pastsession.sessionLength,(int)pastsession.getErrors(),tafelresultaten,pastthreesessions);
-			Locale nederland = new Locale("nl");
-			SimpleDateFormat sf = new SimpleDateFormat("EEEE dd MMM YYYY", nederland);
-			String begindatum = sf.format(fiba.getBegindatum());
-			fiba.setBegindatumstring(begindatum);
-		return fiba;
-		}
-
+	
 	
 	
 	@Override
@@ -370,6 +342,29 @@ public DataEvent retrieveUser(String loginname, String passw) {
 		}
 	}
 
+//maakt statistieken van de voorgaande sessies
+@Override 
+	public FeedbackContainer getFeedbackData(int id )
+	{
+		ArrayList<TafelResult>tafelresultaten = new ArrayList<TafelResult>();
+		int factor =2;
+		while(factor < 20)
+		{
+			TafelResult tr = mySQLAccess.getTafelResults_1(id,factor);
+			tafelresultaten.add(tr);
+			factor++;
+		}
+		SessionSummary pastsession = mySQLAccess.retrieveSession(id);
+		Date thisdate = new Date(pastsession.timestamp.getTime());
+		String pastthreesessions = mySQLAccess.getSessionDatesHtmlString(id);
+		FeedbackContainer fiba = new FeedbackContainer((int)pastsession.howMuchOpgaven, pastsession.averageSpeed,
+		thisdate,pastsession.sessionLength,(int)pastsession.getErrors(),tafelresultaten,pastthreesessions);
+		Locale nederland = new Locale("nl");
+		SimpleDateFormat sf = new SimpleDateFormat("EEEE dd MMM YYYY", nederland);
+		String begindatum = sf.format(fiba.getBegindatum());
+		fiba.setBegindatumstring(begindatum);
+	return fiba;
+	}
 
 
 

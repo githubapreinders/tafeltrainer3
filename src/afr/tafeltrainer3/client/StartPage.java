@@ -146,9 +146,12 @@ public class StartPage extends Composite
 		vpanel2.add(lbl02);
 		flex1.getFlexCellFormatter().setHorizontalAlignment(0, 0, HasHorizontalAlignment.ALIGN_CENTER);
 		flex1.setWidget(1, 2, vpanel2);
-		
 		main.client = new ClientImp(GWT.getModuleBaseURL()+"simpleservice", main);
-		main.gui = new Tafeltrainer3Gui(main.client, main, messages);
+		
+		
+		Devicetype d = GWT.create(Devicetype.class);
+		main.gui = d;
+		main.gui.initializeGui(main.client, main, messages);
 		main.user = new User();
 		main.fiba = null;
 		main.wallet = new Wallet(main,messages);
@@ -164,6 +167,14 @@ public class StartPage extends Composite
 		public void onClick(ClickEvent event) 
 		{
 			btn10.setEnabled(false);
+			if(txtlogin.getText().equals("gast") && txtpassw.getText().equals("geheim"))
+			{
+				alertwidget.getBox().setText("");
+				alertwidget.getContentlabel().setText(messages.startpage_blankloginwarning());
+				alertwidget.getBox().center();
+			}
+			
+			main.showPageTafelTrainer();
 			main.submitOnEntry(txtlogin.getText(),txtpassw.getText());
 		}
 		

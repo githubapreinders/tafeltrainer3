@@ -63,7 +63,7 @@ public class MainView extends Composite implements ValueChangeHandler
 	public Shop shop;
 	public StartPage startpage;
 	private SuperUser superuser;
-	public Tafeltrainer3Gui gui;
+	public Devicetype gui;
 	public tafeltrainer3messages messages;
 	public User user;
 	private VerticalPanel vpanel;
@@ -253,9 +253,6 @@ public class MainView extends Composite implements ValueChangeHandler
 				if(user.getLoginname().equals("gast"))
 				{
 					this.user.setId(1);
-					alertwidget.getBox().setText("");
-					alertwidget.getContentlabel().setText(messages.startpage_blankloginwarning());
-					alertwidget.getBox().center();
 					this.gast = new Gast();
 					this.menu.lbl12.setText(messages.menupage_welkomgebruiker() + " " + this.user.getName() );
 					this.menu.hpanel2.setVisible(true);
@@ -264,10 +261,8 @@ public class MainView extends Composite implements ValueChangeHandler
 					this.gui.hpanel3.clear();
 					this.fiba = new FeedbackContainer(0,0.0,new Date(),"0",0,new ArrayList<TafelResult>(),"Je hebt alleen vandaag geoefend");
 					this.fbpage.setFeedbackContainer(fiba);
-
-
 				}
-				showPageTafelTrainer();
+				//showPageTafelTrainer();
 				this.menu.lbl12.setText(messages.menupage_welkomgebruiker() + " " + this.user.getName() );
 				this.menu.hpanel2.setVisible(true);
 				this.wallet.productlist.clear();
@@ -283,6 +278,7 @@ public class MainView extends Composite implements ValueChangeHandler
 				alertwidget.getBox().center();
 				this.startpage.btn10.setEnabled(true);
 				this.menu.lbl12.setText(messages.menupage_diekennenweniet());
+				showPageStartPage();
 			}
 		}
 //na het invoeren van een nieuwe user
@@ -339,11 +335,6 @@ public class MainView extends Composite implements ValueChangeHandler
 //maakt de rpc-call bij een loginpoging van een user
 	public void submitOnEntry(String loginname, String passw)
 		{
-			if(loginname.equals("") && passw.equals(""))
-			{
-				loginname = messages.mainpage_blankloginname();
-				passw = messages.mainpage_blankloginpassw();
-			}
 			
 			if(Validate.checkTextbox(loginname) && Validate.checkTextbox(passw))
 			{
@@ -355,6 +346,7 @@ public class MainView extends Composite implements ValueChangeHandler
 				Utilities.alertWidget("", messages.startpage_failedloginmessage(), messages).center();
 				startpage.btn10.setEnabled(true);
 				startpage.txtlogin.setText("");startpage.txtpassw.setText("");
+				showPageStartPage();
 			}
 		}	
 	
@@ -488,7 +480,7 @@ public class MainView extends Composite implements ValueChangeHandler
 		return this.user;
 	}
 	
-	public Tafeltrainer3Gui getGui() {
+	public Devicetype getGui() {
 		return this.gui;
 	}
 

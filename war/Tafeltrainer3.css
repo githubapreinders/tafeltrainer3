@@ -1,0 +1,751 @@
+ 
+/** contents css-sheet
+
+body : achtergrondplaatje voor de hele toepassing
+buttonpage2 : 
+fouteinvoer : maakt een rode rand om een textbox bij ongevalideerde invoer
+goedeinvoer : maakte een groene rand om een textbox wanneer het correct is gevalideerd
+contentpanel : hoofdpaneel waar alle pagina's in worden geladen
+groenblok : blokje voor de feedbackgrafiek;
+gwt-label : alle labels die verder niet apart zijn omschreven
+h1 : titel bovenaan
+html_fout : rode feedbackregel bij de tafeltrainer
+html_goed : groene feedbackregel bij de tafeltrainer
+invulbox : tafeltrainer antwoordbox
+kleinelabels : labels met lettergrootte 10 en kleur wit
+kleinelabelst(2tm9): labels die per tafel een ander kleurtje geven;
+labelgoedgekeurd : zet een groene italic "V" achter gevalideerde invoer
+labelafgekeurd : zet rode italic tekst neer
+listboxshop : keuzebox in het winkeltje
+middellabels : labels met lettergrootte 14 en kleur wit
+middellabelszwart : labels met lettergrootte 14 en kleur zwart
+menupanel : knoppenrij met hyperlinks tussen de titel en de content
+opgavenlabel : label links van de antwoordbox in de tafeltrainer
+page4invulbox : ronde textboxen voor het invullen van gebruikersgegevens.
+passwordinvulbox : loginmenu in het menu boven
+popup : popupplaatje in de wallet
+productframe : achtergrondkleur voor een product uit het winkeltje
+productimage : plaatje voor in het winkeltje
+roodblok : blokje voor de feedbackgrafiek
+smallbutton : een knop met een plaatje als achtergrond en grootte 50 X 20
+standardbutton : een knop met een plaatje als achtergrond en grootte 90 x 40
+startknop :knop tafeltrainer 
+stopknop :knop tafeltrainer
+tafeltabel : flextable waar zich de tafeltrainer in bevindt.
+timerbar : verlopende groene balk die de verstreken tijd aangeeft.
+timerbardefault : dezelfde verlopende balk maar dan bij aanvang of na afloop
+topkader : kader waarin zich de titel bovenaan bevindt
+vpanelmain : centreert het hele programma op de webpagina
+vpanelpage2 : kader voor page2
+vpanelpage3 : kader voor page3
+walletlbl00 : kader voor het geldbedrag in de portemonnee;
+
+
+
+*/
+
+
+
+body
+{
+	background: url(/images/tablesbg1.jpg);
+}
+
+#bodydemobegeleider
+{
+	background: url(/images/tafeltabel2.png);
+}
+
+.admininvulbox
+{
+	font-size 	: 110% ;
+	background: white; 
+    border: 1px double #DDD; 
+    border-radius: 5px; 
+    box-shadow: 0 0 5px #333; 
+    color: #666; 
+    outline: none; 
+    height:25px; 
+    width: 200px; 
+}
+
+.admininvulbox_fouteinvoer
+{
+	font-size 	: 110% ;
+	background: white; 
+    border: 1px double red; 
+    border-radius: 5px; 
+    box-shadow: 0 0 5px #333; 
+    color: #666; 
+    outline: none; 
+    height:25px; 
+    width: 200px; 
+}
+
+
+
+
+.anchor_red
+{
+	color : red;
+}
+
+.gwt-CheckBox
+{
+	
+	
+}
+
+
+.contentpanel
+{
+	margin-left: auto;
+	margin-right: auto;
+	width : 100%;
+	height : 100%;
+}
+
+.buttonpage2
+{
+	background-image: url('/images/button1.png');
+	background-repeat: no-repeat;
+	width : 140px;
+	height : 40px;
+	font-size : 120%;
+	text-align :left;
+	margin: 5px;
+}
+.btnmenupage
+{
+	color : white ;
+	font-size : 90%;
+	width: 100px;
+	height: 20px;
+	border: 0px;
+	padding : 2px;
+	background-color: #194aff;
+	
+}
+
+.btnmenupage:hover
+{
+	
+	background-color: #1975ff;
+}
+
+.Caption
+{
+	margin-left : 10px;
+	color:white;
+	text-shadow:1px 1px black;
+	font-size : 14px;
+	font-family : "verdana", sans-serif;
+}
+
+.fouteinvoer
+{
+	background: white; 
+    border: 1px double red; 
+    border-radius: 5px; 
+    box-shadow: 0 0 5px #333; 
+    color: #666; 
+    outline: none; 
+    height:25px; 
+    width: 130px; 
+}
+
+.goedeinvoer
+{
+	border-color: green;
+}
+
+.gwt-Label
+{ 
+	font-size : 16px;
+	font-family : "verdana", sans-serif;
+   	text-align : center;
+   	border : 2px;
+   	color: white;  
+}
+.groenblok
+{
+	height: 7px;
+	width : 3px;
+	background-color : green ; 
+	border : 0px;
+	
+}
+
+.gwt-Anchor
+{
+	font-size : 12px;
+	font-family : "verdana", sans-serif;
+	color:blue;
+	
+}
+
+.anchor
+{
+	font-family : "verdana", sans-serif;
+}
+
+h1,h2,h3
+{
+	margin-top:auto;
+	margin-bottom:auto;
+	color : white;
+	text-align :center;
+	font-size: 30px;
+	font-family: "verdana", sans-serif;
+	text-shadow:2px 2px black;
+}
+
+
+.html_fout
+{
+	margin-left : 20px;
+	color:red;
+	text-shadow:1px 1px #3d4545;
+	font-size : 16px;
+	font-family : "verdana", sans-serif;	
+}
+
+.html_goed
+{
+	margin-left : 20px;
+	color:green;
+	text-shadow:1px 1px #3d4545;
+	font-size : 16px;
+	font-family : "verdana", sans-serif;	
+}
+
+.html
+{
+	margin-left : 10px;
+	color:white;
+	text-shadow:1px 1px black;
+	font-size : 14px;
+	font-family : "verdana", sans-serif;	
+}
+
+.html_groot
+{
+	color:white;
+	text-shadow:2px 2px black;
+	font-size : 20px;
+	font-family : "verdana", sans-serif;	
+}
+
+.invulbox
+{
+	font-size 	: 180% ;
+	background: white; 
+    border: 1px double #DDD; 
+    border-radius: 5px; 
+    box-shadow: 0 0 5px #333; 
+    color: #666; 
+    outline: none; 
+    height:50px; 
+    width: 130px; 
+}
+
+.imagebigcopy
+{
+	 -webkit-box-shadow: 3px 3px 3px #272323;
+    box-shadow: 3px 3px 3px #272323;
+}
+
+.imagesmall
+{
+	width : 40px;
+}
+
+.listboxshop
+{
+	font-size : 16px;
+}
+
+.kleinelabelsuitstekend
+{
+	font-size : 10px;
+	font-family : "verdana", sans-serif;
+   	text-align : center;
+   	color: #002a06;  
+}
+
+.kleinelabelsgoed
+{
+	font-size : 10px;
+	font-family : "verdana", sans-serif;
+   	text-align : center;
+   	color:   #6c9724;
+   	text-shadow:1px 1px black;
+}
+
+.kleinelabelsvoldoende
+{
+	font-size : 10px;
+	font-family : "verdana", sans-serif;
+   	text-align : center;
+   	color: yellow;  
+   	text-shadow:1px 1px black;
+}
+
+.kleinelabelsmatig
+{
+	font-size : 10px;
+	font-family : "verdana", sans-serif;
+   	text-align : center;
+   	color: #f36900;  
+   	text-shadow:1px 1px black;
+}
+
+.kleinelabelszwak
+{
+	font-size : 10px;
+	font-family : "verdana", sans-serif;
+   	text-align : center;
+   	color: #e81a01;  
+   	text-shadow:1px 1px black;
+}
+
+
+.labelgoedgekeurd
+{
+	font-family : "verdana", sans-serif;
+	font-size : 20px;
+	font-style: italic;
+	color: lime;
+}
+
+.labelafgekeurd
+{
+	font-family : "verdana", sans-serif;
+	font-size : 20px;
+	font-style: italic;
+	color: red;
+}
+	
+.menupanel
+{
+	margin-left: auto;
+	margin-right: auto;
+	height : 100%;
+	width : 100%;
+}
+
+.kleinelabels
+{
+	font-size : 10px;
+	font-family : "verdana", sans-serif;
+   	text-align : justify;
+   	color: white;  
+   	text-shadow:1px 1px black;
+}
+
+.middellabels
+{
+	font-size : 14px;
+	font-family : "verdana", sans-serif;
+   	text-align : left;
+   	color: white;  
+   	text-shadow:1px 1px black;
+}
+.kleinelabelszwart
+{
+	font-size : 14px;
+	font-family : "verdana", sans-serif;
+   	text-align : center;
+   	color: black;  
+   	text-shadow:1px 1px aqua;
+}
+
+.noborder
+{
+	border: 2px;
+	border-color: green;
+}
+
+.numpadbutton
+{
+    font-size: 26px;
+    font-family:Arial;
+    font-weight:bold;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    border: 1px solid #3866A3;
+    padding: 9px 18px;
+    text-shadow:1px 1px 0px #5E5E5E;
+    -moz-box-shadow:inset 1px 1px 0px 0px #BEE2F9;
+    -webkit-box-shadow:inset 1px 1px 0px 0px #BEE2F9;
+    box-shadow:inset 1px 1px 0px 0px #BEE2F9;
+    font-weight:normal;
+    text-decoration:none;
+    cursor: default;
+    background:-webkit-linear-gradient(90deg, #2875BD 5%, #7FBBE0 100%);
+    background:-moz-linear-gradient(90deg, #2875BD 5%, #7FBBE0 100%);
+    background:-ms-linear-gradient(90deg, #2875BD 5%, #7FBBE0 100%);
+    background:linear-gradient(180deg, #7FBBE0 5%, #2875BD 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#7FBBE0', endColorstr='#2875BD');
+    /*background-color:#2875BD;*/
+    color:#FFFFFF;
+    display:inline-block;
+}
+
+
+
+.numpadbutton:hover
+{
+	background:-webkit-linear-gradient(90deg, #7FBBE0 5%, #2875BD 100%);
+    background:-moz-linear-gradient(90deg, #7FBBE0 5%, #2875BD 100%);
+    background:-ms-linear-gradient(90deg, #7FBBE0 5%, #2875BD 100%);
+    background:linear-gradient(180deg,#2875BD  5%, #7FBBE0 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#2875BD', endColorstr='#7FBBE0');
+    
+}
+
+.opgavenlabel
+{
+	font-size : 200%;
+	font-family : "verdana", sans-serif;
+	text-align : right;
+   	border : 2px;
+   	color: white;
+   	text-shadow:1px 1px black;
+   	
+}
+
+p
+{
+	font-family : "verdana", sans-serif;
+	
+}
+
+.page4invulbox
+{
+	font-size 	: 110% ;
+	background: white; 
+    border: 1px double #DDD; 
+    border-radius: 5px; 
+    box-shadow: 0 0 5px #333; 
+    color: #666; 
+    outline: none; 
+    height:25px; 
+    width: 200px; 
+} 
+
+
+
+.page4invulbox_fout
+{
+	font-size 	: 110% ;
+	background: white; 
+    border: 1px double red; 
+    border-radius: 5px; 
+    box-shadow: 0 0 5px #333; 
+    color: #666; 
+    outline: none; 
+    height:25px; 
+    width: 200px; 
+}
+
+
+.passwordinvulbox
+{
+	background: white; 
+    border: 1px double #DDD; 
+    border-radius: 5px; 
+    box-shadow: 0 0 5px #333; 
+    color: #666; 
+    outline: none; 
+    height:15px; 
+    width: 150px; 
+    padding: 2px;
+}
+
+.popup
+{
+	border : 10px solid blue;
+	background-color: blue;
+	-webkit-box-shadow: 3px 3px 3px #272323;
+    box-shadow: 3px 3px 3px #272323;
+    
+}
+
+.popup2
+{
+	background-image: url('/images/tafeltabel2.png');
+	margin-right : auto;
+	margin-left : auto;
+	margin-top : 10px;
+	border : 5px  solid #b5f7f9;
+	border-radius : 25px;
+		
+	
+}
+
+
+.productframe
+{
+	width :100px;
+	padding:2px;
+	background-image: url(/images/tablesbg1.jpg);
+}
+
+.productframelarger
+{
+	width :110px;
+	height:100px;
+	padding:2px;
+	background-image: url(/images/tablesbg1.jpg);
+}
+
+.productimagelarger
+{
+	margin-left : auto;
+	margin-right : auto;
+	width : 100px;
+	border: 1px;
+}
+
+
+.productimage
+{
+	margin-left : auto;
+	margin-right : auto;
+	width : 70px;
+	height : 70px;
+	border: 1px;
+}
+.productlabel
+{
+	font-size : 11px;
+	font-family : "verdana", sans-serif;
+   	text-align : center;
+   	color: black;  
+   	text-shadow:1px 1px blue;
+}
+
+.redborder
+{
+	border : 3px solid red;
+}
+
+.roodblok
+{
+	height: 7px;
+	width : 3px;
+	background-color: red;
+	border : 0px;
+}
+
+
+
+
+
+.smallbutton
+{
+	background-color:blue;
+	width : 90px;
+	height : 20px;
+	font-size : 10px;
+	text-align :center;
+	color :white;
+}
+
+.standardbutton {
+    font-size: 16px;
+    font-family:Verdana;
+    font-weight:normal;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    border: 1px solid #3866A3;
+    padding: 9px 18px;
+    text-shadow:1px 1px 0px #5E5E5E;
+    -moz-box-shadow:inset 1px 1px 0px 0px #BEE2F9;
+    -webkit-box-shadow:inset 1px 1px 0px 0px #BEE2F9;
+    box-shadow:inset 1px 1px 0px 0px #BEE2F9;
+    font-weight:normal;
+    text-decoration:none;
+    cursor: default;
+    background:-webkit-linear-gradient(90deg, #2875BD 5%, #7FBBE0 100%);
+    background:-moz-linear-gradient(90deg, #2875BD 5%, #7FBBE0 100%);
+    background:-ms-linear-gradient(90deg, #2875BD 5%, #7FBBE0 100%);
+    background:linear-gradient(180deg, #7FBBE0 5%, #2875BD 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#7FBBE0', endColorstr='#2875BD');
+    color:#FFFFFF;
+    display:inline-block;
+    }
+    
+.standardbutton:hover 
+{
+    background:-webkit-linear-gradient(90deg, #63b8ee 5%, #468ccf 100%);
+    background:-moz-linear-gradient(90deg, #63b8ee 5%, #468ccf 100%);
+    background:-ms-linear-gradient(90deg, #63b8ee 5%, #468ccf 100%);
+    background:linear-gradient(180deg, #468ccf 5%, #63b8ee 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#468ccf', endColorstr='#63b8ee');
+}
+    
+.tafeltabel {
+	background-image: url('/images/tafeltabel.png');
+	margin-right : auto;
+	margin-left : auto;
+	margin-top : 2px;
+	border : 5px  solid #b5f7f9;
+	border-radius : 25px;
+	
+	
+}
+
+.timerbar {
+	
+	background-image : none;
+	width :  100%;
+	heigth : 100%;
+	padding : 0px;
+}
+
+.timerbardefault
+{
+	background-image: url('/images/defaulttimerpicture.jpg');
+}
+
+.timerimg1
+{
+	width : 2px;
+	height :50px;
+	border: 0px;
+	background-color : #16973a;
+}
+
+.timerimg2
+{
+	width : 2px;
+	height :50px;
+	border: 0px;
+	background-color: #6c9724;
+}
+
+.timerimg3
+{
+	width : 2px;
+	height :50px;
+	border: 0px;
+	background-color: #bd970e;
+}
+.timerimg4
+{
+	width : 2px;
+	height :50px;
+	border: 0px;
+	background-color: #f39300;
+}
+
+.timerimg5
+{
+	width : 2px;
+	height :50px;
+	border: 0px;
+	background-color: #f38200;
+}
+.timerimg6
+{
+	width : 2px;
+	height :50px;
+	border: 0px;
+	background-color: #f36900;
+}
+
+.timerimg7
+{
+	width : 2px;
+	height :50px;
+	border: 0px;
+	background-color: #f35200;
+}
+.timerimg8
+{
+	width : 2px;
+	height :50px;
+	border: 0px;
+	background-color: #f12f00;
+}
+.timerimg9
+{
+	width : 2px;
+	height :50px;
+	border: 0px;
+	background-color: #e81a01;
+}
+.timerimg10
+{
+	width : 2px;
+	height :50px;
+	border: 0px;
+	background-color: #e20903;
+}
+/*hash gebruik je als je een id hebt gezet binnen de html
+of via het DOM. De punt gebruik je wanneer
+je een stylenaam hebt gezet direct via "component.setStyleName"*/
+.topkader
+{
+	margin-left: auto;
+	margin-right: auto;
+	background-image: url('/images/tafeltabel.png');
+	width : 400px;
+	height : 40px;
+	border : 5px  solid #b5f7f9;
+	border-radius: 25px;
+}
+/*
+centreert het hele bouwwerk
+*/
+.topkader_menupage
+{
+	margin-left: auto;
+	margin-right: auto;
+	background-image: url('/images/tafeltabel.png');
+	width : 400px;
+	height : 35px;
+	border : 5px  solid #b5f7f9;
+	border-radius: 25px;
+}
+
+
+
+.vpanelmain
+{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.vpanelpage2
+{
+	width:100%;
+	heigth : 1000px;
+}
+
+.vpanelpage3
+{
+	
+	background-image: url('/images/tafeltabel.png');
+	background-color : lime;
+	width:800px;
+	heigth : 200px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
