@@ -63,7 +63,7 @@ public class MainView extends Composite implements ValueChangeHandler
 	public Shop shop;
 	public StartPage startpage;
 	private SuperUser superuser;
-	public Devicetype gui;
+	public Tafeltrainer3Gui gui;
 	public tafeltrainer3messages messages;
 	public User user;
 	private VerticalPanel vpanel;
@@ -87,9 +87,7 @@ public class MainView extends Composite implements ValueChangeHandler
 		this.startpage = new StartPage(this,messages,alertwidget);
 		this.contentpanel.add(startpage);
 		this.vpanel.add(contentpanel);
-
 		this.fbpage = new FeedbackPage(this, fiba,this.messages);
-		
 		this.loginsuperuser = new LoginSuperUser(this);
 		this.newsuperuser = new NewSuperUser(this,messages,alertwidget);
 		
@@ -443,10 +441,16 @@ public class MainView extends Composite implements ValueChangeHandler
 		this.client.stopQuiz();
 		this.fbpage.flex10.clear();
 		this.fbpage.flex11.clear();
-		this.gui.hpanel3.clear();
-		this.gui.hpanel40.clear();
-		this.gui.lbl3.setText("");
-		this.gui.gaugepanel.clear();
+		try
+		{
+			this.gui.hpanel3.clear();
+			this.gui.hpanel40.clear();
+			this.gui.lbl3.setText("");
+			this.gui.gaugepanel.clear();
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
 		this.wallet.flowpaneldroptarget.clear();
 		this.wallet.bedragveranderd=true;
 		this.contentpanel.clear();
@@ -480,7 +484,7 @@ public class MainView extends Composite implements ValueChangeHandler
 		return this.user;
 	}
 	
-	public Devicetype getGui() {
+	public Tafeltrainer3Gui getGui() {
 		return this.gui;
 	}
 

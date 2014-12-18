@@ -8,10 +8,10 @@
 	<inherits name='com.google.gwt.user.User' />
 	<inherits name="com.google.gwt.i18n.I18N" />
 	<inherits name='com.google.gwt.visualization.Visualization' />
-	<extend-property name="locale" values="en" />
-	<extend-property name="locale" values="nl_NL" />
+	<!-- <extend-property name="locale" values="en" />
+	<extend-property name="locale" values="nl_NL" /> 
 	<extend-property name="locale" values="nl" />
-	<set-property-fallback name="locale" value="nl" />
+	<set-property-fallback name="locale" value="nl" /> -->
 
 
 	<!-- Specify the app entry point class. -->
@@ -63,26 +63,25 @@
 	</property-provider>
 
 	<replace-with class="afr.tafeltrainer3.client.Tafeltrainer3Gui_mobile">
-		<when-type-is class="afr.tafeltrainer3.client.Devicetype" />
+		<when-type-is class="afr.tafeltrainer3.client.Tafeltrainer3Gui" />
 		<when-property-is name="formfactor" value="tablet" />
 	</replace-with>
 
-	<replace-with class="afr.tafeltrainer3.client.Tafeltrainer3Gui_mobile">
-		<when-type-is class="afr.tafeltrainer3.client.Devicetype" />
+	<replace-with class="afr.tafeltrainer3.client.Tafeltrainer3Gui_desktop">
+		<when-type-is class="afr.tafeltrainer3.client.Tafeltrainer3Gui" />
 		<when-property-is name="formfactor" value="mobile" />
 	</replace-with>
 
-	<replace-with class="afr.tafeltrainer3.client.Tafeltrainer3Gui">
-		<when-type-is class="afr.tafeltrainer3.client.Devicetype" />
+	<replace-with class="afr.tafeltrainer3.client.Tafeltrainer3Gui_desktop">
+		<when-type-is class="afr.tafeltrainer3.client.Tafeltrainer3Gui" />
 		<when-property-is name="formfactor" value="desktop" />
 	</replace-with>
 
+	
 	<add-linker name="xsiframe" />
 	<set-configuration-property name="devModeRedirectEnabled"
 		value="true" />
 	<set-property name="compiler.useSourceMaps" value="true" />
-
-
 
 
 </module>

@@ -1,5 +1,7 @@
 package afr.tafeltrainer3.client;
 
+import java.util.ArrayList;
+
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
@@ -27,12 +29,14 @@ private HorizontalPanel hpanelrow2;
 private HorizontalPanel hpanelrow3;
 private HorizontalPanel hpanelrow4;
 public String number;
-private Devicetype gui;
+private Tafeltrainer3Gui gui;
 private VerticalPanel vpanel;
+private ArrayList<Button> buttons;
 
-	public NumPadWidget(Devicetype gui)
+	public NumPadWidget(Tafeltrainer3Gui gui)
 	{
 		this.gui = gui;
+		this.buttons = new ArrayList<Button>();
 		vpanel = new VerticalPanel();
 		vpanel.setSpacing(0);
 		vpanel.setStyleName("numpadvpanel");
@@ -106,8 +110,19 @@ private VerticalPanel vpanel;
 		hpanelrow4.add(btn0);
 		hpanelrow4.add(btn12);
 		vpanel.add(hpanelrow4);
-		
 		number = "";
+		buttons.add(btn0);
+		buttons.add(btn1);
+		buttons.add(btn2);
+		buttons.add(btn3);
+		buttons.add(btn4);
+		buttons.add(btn5);
+		buttons.add(btn6);
+		buttons.add(btn7);
+		buttons.add(btn8);
+		buttons.add(btn9);
+		buttons.add(btn11);
+		buttons.add(btn12);
 	}
 	
 	private class btnNumPadClickHandler implements ClickHandler
@@ -116,8 +131,9 @@ private VerticalPanel vpanel;
 		public void onClick(ClickEvent event) 
 		{
 			Button s = (Button)event.getSource();
-			number = number + s.getText();
-			gui.txt1.setText(number);
+			number =  s.getText();
+			gui.addToCache(number);
+			gui.answerSubmitted();
 		}
 	}
 	
@@ -139,12 +155,21 @@ private VerticalPanel vpanel;
 		public void onClick(ClickEvent event) 
 		{
 			number = "";
-			gui.txt1.setText(number);
+			gui.getTxt10().setText(number);
+			gui.setFlag(0);
+			gui.setSecondflag(0);
 		}
 		
 	}
 	
 	
+	public void enableWidget(boolean enabled)
+	{
+			for(Button b : buttons)
+			{
+				b.setEnabled(enabled);
+			}
+	}
 	
 	
 	

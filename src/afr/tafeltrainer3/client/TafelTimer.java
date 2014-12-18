@@ -10,9 +10,9 @@ public class TafelTimer extends Timer
 	public int timeLeft = totalTime;
 	private int timeStep = 360;
 	private int timeDone;
-	private Devicetype gui;
+	private Tafeltrainer3Gui gui;
 
-	public TafelTimer(Devicetype gui)
+	public TafelTimer(Tafeltrainer3Gui gui)
 	{
 		scheduleRepeating(timeStep);
 		this.gui = gui;

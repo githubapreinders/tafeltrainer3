@@ -416,6 +416,20 @@ h1,h2,h3
    	
 }
 
+.opgavenlabel_mobile
+{
+	font-size : 200%;
+	font-family : "verdana", sans-serif;
+	text-align : right;
+   	border : 2px;
+   	color: #667788;
+   	text-shadow:1px 1px black;
+   	
+}
+
+
+
+
 p
 {
 	font-family : "verdana", sans-serif;

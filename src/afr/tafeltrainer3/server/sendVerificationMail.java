@@ -19,14 +19,12 @@ import afr.tafeltrainer3.shared.SuperUser;
 
 public class sendVerificationMail
 {
-	private MySQLAccess mysqlacces = new MySQLAccess();
 	private SuperUser superuser;	
 
 		public sendVerificationMail(SuperUser superuser)
 		{
 			this.superuser = superuser;
-			// sendMail("apreinders74@gmail.com","afreinders@xs4all.nl","apreinders74@gmail.com",
-			//		"Verificatie van uw e-mailadres",createMessage());
+			
 		}
 			
 		public String sendMail(String from, String to, String replyTo, String subject, String message) {

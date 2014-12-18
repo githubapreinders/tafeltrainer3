@@ -43,6 +43,7 @@ public class StartPage extends Composite
 	public Button btn10;
 	tafeltrainer3messages messages;
 	
+	
 	public StartPage(MainView main,tafeltrainer3messages messages,AlertWidget alertwidget)
 	{
 		
@@ -146,18 +147,20 @@ public class StartPage extends Composite
 		vpanel2.add(lbl02);
 		flex1.getFlexCellFormatter().setHorizontalAlignment(0, 0, HasHorizontalAlignment.ALIGN_CENTER);
 		flex1.setWidget(1, 2, vpanel2);
+		
 		main.client = new ClientImp(GWT.getModuleBaseURL()+"simpleservice", main);
+		Tafeltrainer3Gui d = GWT.create(Tafeltrainer3Gui.class);
 		
+		d.setClient(main.client);
+		d.setMain(main);
+		d.setMessages(messages);
 		
-		Devicetype d = GWT.create(Devicetype.class);
 		main.gui = d;
-		main.gui.initializeGui(main.client, main, messages);
+		//main.gui.messages = messages;
 		main.user = new User();
 		main.fiba = null;
 		main.wallet = new Wallet(main,messages);
 		main.shop = new Shop(main,messages);
-		
-
 	}
 
 	private class btn10ClickHandler implements ClickHandler

@@ -115,7 +115,17 @@ public class MySQLAccess
 		{
 			e.printStackTrace();
 		}
-
+		finally
+		{
+			if(connect != null)
+				try
+				{
+					connect.close();
+				} catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+		}
 		return su;
 	}
 
@@ -142,6 +152,18 @@ public class MySQLAccess
 		{
 			e.printStackTrace();
 		}
+		finally
+		{
+			if(connect != null)
+				try
+				{
+					connect.close();
+				} catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+		}
+		
 		return returnvalue;
 	}
 
@@ -168,6 +190,17 @@ public class MySQLAccess
 		{
 			e.printStackTrace();
 		}
+		finally
+		{
+			if(connect != null)
+				try
+				{
+					connect.close();
+				} catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+		}
 		return users;
 	}
 
@@ -192,6 +225,17 @@ public class MySQLAccess
 		} catch (SQLException e)
 		{
 			e.printStackTrace();
+		}
+		finally
+		{
+			if(connect != null)
+				try
+				{
+					connect.close();
+				} catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
 		}
 		return reports;
 	}
@@ -219,7 +263,6 @@ public class MySQLAccess
 			}
 		} else
 			message = message + "<i>Geen oefenmomenten bekend</i><br>";
-
 		return message + "<br><br><br>";
 	}
 
@@ -251,11 +294,11 @@ public class MySQLAccess
 					return returndates;
 				}
 			}
-
 		}
 		return returndates;
 	}
 
+	//TODO foutmelding nullpointerexception
 	public ArrayList<Product> getProducts(int userid)
 	{
 		connect = getConn();
@@ -281,6 +324,17 @@ public class MySQLAccess
 			System.out.println("fout in getproducts");
 			e.printStackTrace();
 		}
+		finally
+		{
+			if(connect != null)
+				try
+				{
+					connect.close();
+				} catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+		}
 		return productlist;
 	}
 
@@ -304,6 +358,17 @@ public class MySQLAccess
 			e.printStackTrace();
 			System.out.println("fout in addproduct");
 
+		}
+		finally
+		{
+			if(connect != null)
+				try
+				{
+					connect.close();
+				} catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
 		}
 	}
 
@@ -332,6 +397,17 @@ public class MySQLAccess
 			System.out.println("fout in getuser of superuser onbekend");
 			return resultuser;
 		}
+		finally
+		{
+			if(connect != null)
+				try
+				{
+					connect.close();
+				} catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+		}
 		return resultuser;
 	}
 
@@ -357,6 +433,17 @@ public class MySQLAccess
 			e.printStackTrace();
 			System.out.println("fout in getuser of superuser onbekend");
 			return resultusers;
+		}
+		finally
+		{
+			if(connect != null)
+				try
+				{
+					connect.close();
+				} catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
 		}
 		return resultusers;
 	}
@@ -401,6 +488,17 @@ public class MySQLAccess
 		{
 			e.printStackTrace();
 			System.out.println("fout in addnew superuser...");
+		}
+		finally
+		{
+			if(connect != null)
+				try
+				{
+					connect.close();
+				} catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
 		}
 		return superuser;
 	}
@@ -454,6 +552,17 @@ public class MySQLAccess
 			System.out.println("updateusermetadata");
 
 		}
+		finally
+		{
+			if(connect != null)
+				try
+				{
+					connect.close();
+				} catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+		}
 	}
 
 	public ArrayList<User> getGroup(SuperUser superuser)
@@ -485,6 +594,17 @@ public class MySQLAccess
 			e.printStackTrace();
 			System.out.println("fout in getgroup");
 		}
+		finally
+		{
+			if(connect != null)
+				try
+				{
+					connect.close();
+				} catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+		}
 		return users;
 	}
 
@@ -513,6 +633,17 @@ public class MySQLAccess
 		} catch (Exception e)
 		{
 			e.printStackTrace();
+		}
+		finally
+		{
+			if(connect != null)
+				try
+				{
+					connect.close();
+				} catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
 		}
 	}
 
@@ -575,6 +706,17 @@ public class MySQLAccess
 			e.printStackTrace();
 			System.out.println("fout in addNewUser");
 		}
+		finally
+		{
+			if(connect != null)
+				try
+				{
+					connect.close();
+				} catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+		}
 		return new User(lastrow, user.getEmailsuperuser(), user.getName(), user.getFamilyname(), user.getGroupname(),
 				user.getLoginname(), user.getPassword(), 0, user.getHouindegaten());
 	}
@@ -606,6 +748,17 @@ public class MySQLAccess
 		} catch (Exception e)
 		{
 			e.printStackTrace();
+		}
+		finally
+		{
+			if(connect != null)
+				try
+				{
+					connect.close();
+				} catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
 		}
 		return userresults;
 	}
@@ -652,6 +805,17 @@ public class MySQLAccess
 		{
 			System.out.println("fout in gettafelresults_1");
 			e.printStackTrace();
+		}
+		finally
+		{
+			if(connect != null)
+				try
+				{
+					connect.close();
+				} catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
 		}
 
 		return tr;
@@ -710,6 +874,17 @@ public class MySQLAccess
 			System.out.println("fout in gettafelresults");
 			e.printStackTrace();
 		}
+		finally
+		{
+			if(connect != null)
+				try
+				{
+					connect.close();
+				} catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+		}
 		return tafelresultaten;
 	}
 
@@ -738,6 +913,17 @@ public class MySQLAccess
 		{
 			System.out.println("fout in geterrors");
 			e.printStackTrace();
+		}
+		finally
+		{
+			if(connect != null)
+				try
+				{
+					connect.close();
+				} catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
 		}
 		return errors;
 	}
@@ -768,6 +954,17 @@ public class MySQLAccess
 		{
 			System.out.println("foutje in getaveragespeed");
 		}
+		finally
+		{
+			if(connect != null)
+				try
+				{
+					connect.close();
+				} catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+		}
 		return averagespeed;
 	}
 
@@ -795,6 +992,17 @@ public class MySQLAccess
 		} catch (SQLException s)
 		{
 			System.out.println("ergens iets fout...in howmuchopgaven");
+		}
+		finally
+		{
+			if(connect != null)
+				try
+				{
+					connect.close();
+				} catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
 		}
 		return result;
 	}
@@ -854,6 +1062,17 @@ public class MySQLAccess
 			System.out.println("fout in updatesuperuser");
 			e.printStackTrace();
 		}
+		finally
+		{
+			if(connect != null)
+				try
+				{
+					connect.close();
+				} catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+		}
 	}
 
 	/**
@@ -883,6 +1102,17 @@ public class MySQLAccess
 		{
 			System.out.println("fout in updateuser");
 			e.printStackTrace();
+		}
+		finally
+		{
+			if(connect != null)
+				try
+				{
+					connect.close();
+				} catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
 		}
 	}
 
@@ -918,6 +1148,17 @@ public class MySQLAccess
 			System.out.println("fout in administratorUpdatesUser");
 			e.printStackTrace();
 		}
+		finally
+		{
+			if(connect != null)
+				try
+				{
+					connect.close();
+				} catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+		}
 	}
 
 	public void writeOpgave(Opgave opgave, int userid)
@@ -944,6 +1185,17 @@ public class MySQLAccess
 		{
 			System.out.println("fout in writeopgave");
 			e.printStackTrace();
+		}
+		finally
+		{
+			if(connect != null)
+				try
+				{
+					connect.close();
+				} catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
 		}
 
 	}
@@ -1004,6 +1256,17 @@ public class MySQLAccess
 			System.out.println("fout in retrieve session");
 			e.printStackTrace();
 		}
+		finally
+		{
+			if(connect != null)
+				try
+				{
+					connect.close();
+				} catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+		}
 		return session;
 	}
 
@@ -1035,12 +1298,22 @@ public class MySQLAccess
 				return;
 
 			}
-
 			catch (Exception e)
 			{
 				System.out.println("fout in writesession");
 				e.printStackTrace();
 			}
+		finally
+		{
+			if(connect != null)
+				try
+				{
+					connect.close();
+				} catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+		}
 
 		if (flag == 1)
 			try
@@ -1067,6 +1340,17 @@ public class MySQLAccess
 				System.out.println("fout in writesession");
 				e.printStackTrace();
 			}
+		finally
+		{
+			if(connect != null)
+				try
+				{
+					connect.close();
+				} catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+		}
 	}
 
 	public User getUser(String loginname, String password)
@@ -1094,6 +1378,18 @@ public class MySQLAccess
 			System.out.println("fout in getuser of user onbekend");
 			return resultuser;
 		}
+		finally
+		{
+			if(connect != null)
+				try
+				{
+					connect.close();
+				} catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+		}
+		
 		return resultuser;
 	}
 
@@ -1120,6 +1416,17 @@ public class MySQLAccess
 		{
 			System.out.println("fout in getuserById of user onbekend");
 			return resultuser;
+		}
+		finally
+		{
+			if(connect != null)
+				try
+				{
+					connect.close();
+				} catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
 		}
 		return resultuser;
 	}
