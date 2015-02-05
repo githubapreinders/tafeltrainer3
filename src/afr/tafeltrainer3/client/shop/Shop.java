@@ -9,12 +9,14 @@ import java.util.Map;
 import java.util.Set;
 
 import afr.tafeltrainer3.client.MainView;
+import afr.tafeltrainer3.client.MyResources;
 import afr.tafeltrainer3.client.ProductIO;
 import afr.tafeltrainer3.client.Utilities;
 import afr.tafeltrainer3.client.tafeltrainer3messages;
 import afr.tafeltrainer3.shared.Product;
 import afr.tafeltrainer3.shared.ProductWidget;
 
+import com.google.gwt.core.shared.GWT;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
@@ -123,7 +125,6 @@ private HorizontalPanel hpanel20;
 		this.spanel10.setWidth("960px");
 		this.hpanel10 = new HorizontalPanel();
 		this.hpanel10.setSpacing(5);
-		//this.hpanel10.setWidth("940px");
 		this.hpanel10.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
 		this.hpanel10.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_LEFT);
 		this.img = new Image("/images/shop/winkelwagentje.jpg");
@@ -147,7 +148,6 @@ private HorizontalPanel hpanel20;
 		this.spanel30 = new ScrollPanel();
 		this.spanel30.setWidth("960px");
 		this.hpanel30 = new HorizontalPanel();
-		//this.hpanel30.setWidth("940px");
 		this.hpanel30.setSpacing(5);
 		this.hpanel30.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_LEFT);
 		this.spanel30.add(hpanel30);
@@ -286,9 +286,6 @@ private HorizontalPanel hpanel20;
 				}
 			}
 			break;
-
-			
-			
 			
 			}	
 		}
@@ -445,8 +442,9 @@ private HorizontalPanel hpanel20;
 			{
 				this.costs+=p.price;
 				incart.add(p.getProduct());
-				final Image imgcart = new Image(p.getUrl());
-				imgcart.setHeight("100px");
+				
+				String resourcename = p.getresourcename(p.url);
+				final Image imgcart = new Image(p.findResource(resourcename));
 				imgcart.addClickHandler(new ClickHandler()
 					{
 					int flag = 0;

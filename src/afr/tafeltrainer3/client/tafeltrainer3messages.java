@@ -168,13 +168,13 @@ public interface tafeltrainer3messages extends Messages
 	@DefaultMessage("edelstenen")
 	String winkeltje_categorie_edelstenen();
 
-	@DefaultMessage("Voetballers")
+	@DefaultMessage("voetballers")
 	String winkeltje_categorie_voetballers();
 	
-	@DefaultMessage("Voetballers")
+	@DefaultMessage("grappig")
 	String winkeltje_categorie_grappig();
 	
-	@DefaultMessage("Voetballers")
+	@DefaultMessage("wereldsteden")
 	String winkeltje_categorie_wereldsteden();
 	
 	@DefaultMessage("Afrekenen")
@@ -183,7 +183,7 @@ public interface tafeltrainer3messages extends Messages
 	@DefaultMessage("Uit wagentje")
 	String winkeltje_teruginwagentjebutton();
 	
-	@DefaultMessage("in wagentje")
+	@DefaultMessage("In wagentje")
 	String winkeltje_productwidget_inwagentje();
 	
 	@DefaultMessage("uur")

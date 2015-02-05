@@ -69,7 +69,7 @@ public class StartPage extends Composite
 		this.flex1.getFlexCellFormatter().setVerticalAlignment(1, 1, HasVerticalAlignment.ALIGN_TOP);
 
 		//eerste rij
-		
+		MyResources myresource = GWT.create(MyResources.class);
 
 		
 		vpanel10  = new VerticalPanel();
@@ -101,10 +101,10 @@ public class StartPage extends Composite
 		hpanel10.add(vpanel10a);
 		hpanel10.add(vpanel10b);
 		hpanel10.add(btn10);
+//		hpanel10.add((Image)myresource.kids());
 		vpanel10.add(html00);
 		vpanel10.add(hpanel10);
 		flex1.setWidget(0, 0, vpanel10);
-		
 		
 		//tweede rij
 		VerticalPanel vpanel1 = new VerticalPanel();

@@ -48,7 +48,7 @@ walletlbl00 : kader voor het geldbedrag in de portemonnee;
 
 body
 {
-	background: url(/images/tablesbg1.jpg);
+	background: url(/images/tablesbg1.png);
 }
 
 #bodydemobegeleider
@@ -504,7 +504,7 @@ p
 {
 	width :100px;
 	padding:2px;
-	background-image: url(/images/tablesbg1.jpg);
+	background-image: url(/images/tablesbg1.png);
 }
 
 .productframelarger
@@ -512,7 +512,7 @@ p
 	width :110px;
 	height:100px;
 	padding:2px;
-	background-image: url(/images/tablesbg1.jpg);
+	background-image: url(/images/tablesbg1.png);
 }
 
 .productimagelarger
