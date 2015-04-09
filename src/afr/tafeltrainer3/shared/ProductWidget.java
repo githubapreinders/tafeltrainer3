@@ -80,9 +80,6 @@ private MyResources resources ;
 		s.delete(url.length()-4, url.length());
 		s.delete(0, s.lastIndexOf("/")+1);
 		return s.toString();
-		
-		
-		
 	}
 
 	
@@ -186,16 +183,16 @@ private MyResources resources ;
 		case "uilskuiken": return resources.uilskuiken(); 
 		case "zwaluw": return resources.zwaluw(); 
 		
-		case "asterix": return resources.asterix(); 
-		case "donald_duck": return resources.donald_duck(); 
-		case "garfield": return resources.garfield(); 
-		case "homersimpson": return resources.homersimpson(); 
-		case "lucky_luke": return resources.lucky_luke(); 
-		case "rozepanter": return resources.rozepanter(); 
-		case "scoobydoo": return resources.scoobydoo(); 
-		case "shrek": return resources.shrek(); 
-		case "snoopy": return resources.snoopy(); 
-		case "spongebob": return resources.spongebob();
+		case "Asterix": return resources.Asterix(); 
+		case "Donald_Duck": return resources.Donald_Duck(); 
+		case "Garfield": return resources.Garfield(); 
+		case "Homer_Simpson": return resources.Homer_Simpson(); 
+		case "Lucky_Luke": return resources.Lucky_Luke(); 
+		case "Roze_Panter": return resources.Roze_Panter(); 
+		case "Scooby_Doo": return resources.Scooby_Doo(); 
+		case "Shrek": return resources.Shrek(); 
+		case "Snoopy": return resources.Snoopy(); 
+		case "Sponge_Bob": return resources.Sponge_Bob();
 		
 		case "Arjen_Robben": return resources.Arjen_Robben();
 		case "Cristiano_Ronaldo": return resources.Cristiano_Ronaldo();
@@ -211,17 +208,17 @@ private MyResources resources ;
 		case "Zlatan_Ibrahimovic": return resources.Zlatan_Ibrahimovic();
 		case "Robin_van_Persie": return resources.Robin_van_Persie();
 		
-		case "amsterdam": return resources.amsterdam();
-		case "beijing": return resources.beijing();
-		case "istanboel": return resources.istanboel();
-		case "londen": return resources.londen();
-		case "mexicocity": return resources.mexicocity();
-		case "moskou": return resources.moskou();
-		case "newyork": return resources.newyork();
-		case "parijs": return resources.parijs();
-		case "riodejaneiro": return resources.riodejaneiro();
-		case "sidney": return resources.sidney();
-		case "singapore": return resources.singapore();
+		case "Amsterdam": return resources.Amsterdam();
+		case "Beijing": return resources.Beijing();
+		case "Istanboel": return resources.Istanboel();
+		case "Londen": return resources.Londen();
+		case "Mexico_City": return resources.Mexico_City();
+		case "Moskou": return resources.Moskou();
+		case "New_York": return resources.New_York();
+		case "Parijs": return resources.Parijs();
+		case "Rio_de_Janeiro": return resources.Rio_de_Janeiro();
+		case "Sidney": return resources.Sidney();
+		case "Singapore": return resources.Singapore();
 		
 		case "axolotl": return resources.axolotl();
 		case "dolfijn": return resources.dolfijn();

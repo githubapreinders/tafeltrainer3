@@ -6,6 +6,10 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public interface SimpleServiceAsync  {
 	
+	public void addParentsMailaddress(String username, String password, String emailaddress, boolean subscribed,@SuppressWarnings("rawtypes") AsyncCallback callback);
+	
+	public void submitSurveyResult(SurveyResult surveyresult,@SuppressWarnings("rawtypes") AsyncCallback callback);
+	
 	public void sendPw(String emailadress,@SuppressWarnings("rawtypes") AsyncCallback callback);
 	
 	public void sendAnotherVerificationMail(SuperUser superuser,@SuppressWarnings("rawtypes") AsyncCallback callback);

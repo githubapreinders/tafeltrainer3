@@ -9,6 +9,10 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
 public interface SimpleService extends RemoteService {
 
+	public DataEvent addParentsMailaddress(String username, String password, String emailaddress, boolean subscribed);
+	
+	public void submitSurveyResult(SurveyResult surveyresult);
+	
 	public void sendPw(String emailadress);
 	
 	public void sendAnotherVerificationMail(SuperUser superuser);

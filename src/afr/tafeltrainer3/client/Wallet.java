@@ -25,6 +25,9 @@ import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
+import com.google.gwt.regexp.shared.RegExp;
+import com.google.gwt.regexp.shared.MatchResult;
+
 /**
  * Dit is een widget die bezittingen van een user toont; bezittingen kunnen
  * bestaan uit plaatjes en uit geld. De enige interactie hier is het kunnen sorteren van
@@ -134,6 +137,15 @@ public class Wallet extends Composite {
 					String dot = ".";
 					url.delete(0, url.lastIndexOf(slash) + 1);
 					url.delete(url.lastIndexOf(dot), url.length());
+					
+					for(int i =0; i<url.length();i++)
+					{
+						if(url.charAt(i)=='_')
+						{
+							url.replace(i, i+1, " ");
+						}
+					}
+					
 					HTML htmlpopup = new HTML(url.toString()); 
 					htmlpopup.setStyleName("html");
 					PopupPanel popup = new PopupPanel(true);

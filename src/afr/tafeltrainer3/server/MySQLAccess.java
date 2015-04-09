@@ -14,6 +14,7 @@ import java.util.Random;
 import afr.tafeltrainer3.shared.Opgave;
 import afr.tafeltrainer3.shared.Product;
 import afr.tafeltrainer3.shared.SuperUser;
+import afr.tafeltrainer3.shared.SurveyResult;
 import afr.tafeltrainer3.shared.TafelResult;
 import afr.tafeltrainer3.shared.User;
 import afr.tafeltrainer3.shared.UserResults;
@@ -114,10 +115,9 @@ public class MySQLAccess
 		} catch (Exception e)
 		{
 			e.printStackTrace();
-		}
-		finally
+		} finally
 		{
-			if(connect != null)
+			if (connect != null)
 				try
 				{
 					connect.close();
@@ -127,6 +127,50 @@ public class MySQLAccess
 				}
 		}
 		return su;
+	}
+
+	public boolean submitSurveyResult(SurveyResult surveyresult)
+	{
+		boolean succes = false;
+		try
+		{
+			connect = getConn();
+			preparedStatement = connect
+					.prepareStatement("insert into tafeltrainer.surveyresults (id,userid,stelling1,stelling2,stelling3,"
+							+ "stelling4,stelling5,stelling6,stelling7,vraag8) values (default,?,?,?,?,?,?,?,?,?)");
+			preparedStatement.setInt(1, surveyresult.getUserid());
+			preparedStatement.setString(2, surveyresult.getVraag1());
+			preparedStatement.setString(3, surveyresult.getVraag2());
+			preparedStatement.setString(4, surveyresult.getVraag3());
+			preparedStatement.setString(5, surveyresult.getVraag4());
+			preparedStatement.setString(6, surveyresult.getVraag5());
+			preparedStatement.setString(7, surveyresult.getVraag6());
+			preparedStatement.setString(8, surveyresult.getVraag7());
+			preparedStatement.setString(9, surveyresult.getVraag8());
+			preparedStatement.executeUpdate();
+			succes = true;
+			preparedStatement = connect.prepareStatement("update tafeltrainer.user set hasdonesurvey = 1 where id = ?");
+			preparedStatement.setInt(1, surveyresult.getUserid());
+			preparedStatement.executeUpdate();
+
+		} catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+
+		finally
+		{
+			if (connect != null)
+				try
+				{
+					connect.close();
+				} catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+		}
+
+		return succes;
 	}
 
 	public boolean verifyMailadress(String code)
@@ -151,10 +195,9 @@ public class MySQLAccess
 		} catch (Exception e)
 		{
 			e.printStackTrace();
-		}
-		finally
+		} finally
 		{
-			if(connect != null)
+			if (connect != null)
 				try
 				{
 					connect.close();
@@ -163,7 +206,7 @@ public class MySQLAccess
 					e.printStackTrace();
 				}
 		}
-		
+
 		return returnvalue;
 	}
 
@@ -189,10 +232,9 @@ public class MySQLAccess
 		} catch (SQLException e)
 		{
 			e.printStackTrace();
-		}
-		finally
+		} finally
 		{
-			if(connect != null)
+			if (connect != null)
 				try
 				{
 					connect.close();
@@ -225,10 +267,9 @@ public class MySQLAccess
 		} catch (SQLException e)
 		{
 			e.printStackTrace();
-		}
-		finally
+		} finally
 		{
-			if(connect != null)
+			if (connect != null)
 				try
 				{
 					connect.close();
@@ -298,7 +339,7 @@ public class MySQLAccess
 		return returndates;
 	}
 
-	//TODO foutmelding nullpointerexception
+	// TODO foutmelding nullpointerexception
 	public ArrayList<Product> getProducts(int userid)
 	{
 		connect = getConn();
@@ -323,10 +364,9 @@ public class MySQLAccess
 		{
 			System.out.println("fout in getproducts");
 			e.printStackTrace();
-		}
-		finally
+		} finally
 		{
-			if(connect != null)
+			if (connect != null)
 				try
 				{
 					connect.close();
@@ -358,10 +398,9 @@ public class MySQLAccess
 			e.printStackTrace();
 			System.out.println("fout in addproduct");
 
-		}
-		finally
+		} finally
 		{
-			if(connect != null)
+			if (connect != null)
 				try
 				{
 					connect.close();
@@ -396,10 +435,9 @@ public class MySQLAccess
 			e.printStackTrace();
 			System.out.println("fout in getuser of superuser onbekend");
 			return resultuser;
-		}
-		finally
+		} finally
 		{
-			if(connect != null)
+			if (connect != null)
 				try
 				{
 					connect.close();
@@ -411,7 +449,6 @@ public class MySQLAccess
 		return resultuser;
 	}
 
-	
 	public ArrayList<SuperUser> getSuperUserList()
 	{
 		connect = getConn();
@@ -422,8 +459,8 @@ public class MySQLAccess
 			resultSet = preparedStatement.executeQuery();
 			while (resultSet.next())
 			{
-				resultusers.add(new SuperUser(resultSet.getString("name"), resultSet.getString("email"), resultSet.getString("password"),
-						resultSet.getInt("emailfrequency")));
+				resultusers.add(new SuperUser(resultSet.getString("name"), resultSet.getString("email"), resultSet
+						.getString("password"), resultSet.getInt("emailfrequency")));
 			}
 			preparedStatement.close();
 			resultSet.close();
@@ -433,10 +470,9 @@ public class MySQLAccess
 			e.printStackTrace();
 			System.out.println("fout in getuser of superuser onbekend");
 			return resultusers;
-		}
-		finally
+		} finally
 		{
-			if(connect != null)
+			if (connect != null)
 				try
 				{
 					connect.close();
@@ -447,7 +483,7 @@ public class MySQLAccess
 		}
 		return resultusers;
 	}
-	
+
 	public SuperUser addNewSuperUser(SuperUser superuser)
 	{
 		connect = getConn();
@@ -488,10 +524,9 @@ public class MySQLAccess
 		{
 			e.printStackTrace();
 			System.out.println("fout in addnew superuser...");
-		}
-		finally
+		} finally
 		{
-			if(connect != null)
+			if (connect != null)
 				try
 				{
 					connect.close();
@@ -551,10 +586,9 @@ public class MySQLAccess
 			e.printStackTrace();
 			System.out.println("updateusermetadata");
 
-		}
-		finally
+		} finally
 		{
-			if(connect != null)
+			if (connect != null)
 				try
 				{
 					connect.close();
@@ -593,10 +627,9 @@ public class MySQLAccess
 		{
 			e.printStackTrace();
 			System.out.println("fout in getgroup");
-		}
-		finally
+		} finally
 		{
-			if(connect != null)
+			if (connect != null)
 				try
 				{
 					connect.close();
@@ -633,10 +666,9 @@ public class MySQLAccess
 		} catch (Exception e)
 		{
 			e.printStackTrace();
-		}
-		finally
+		} finally
 		{
-			if(connect != null)
+			if (connect != null)
 				try
 				{
 					connect.close();
@@ -705,10 +737,9 @@ public class MySQLAccess
 		{
 			e.printStackTrace();
 			System.out.println("fout in addNewUser");
-		}
-		finally
+		} finally
 		{
-			if(connect != null)
+			if (connect != null)
 				try
 				{
 					connect.close();
@@ -748,10 +779,9 @@ public class MySQLAccess
 		} catch (Exception e)
 		{
 			e.printStackTrace();
-		}
-		finally
+		} finally
 		{
-			if(connect != null)
+			if (connect != null)
 				try
 				{
 					connect.close();
@@ -763,6 +793,84 @@ public class MySQLAccess
 		return userresults;
 	}
 
+	public String addParentsMailaddress(String username, String password, String parentsemail,boolean subscribe)
+	{
+		String result = "mail added";
+		connect = getConn();
+		try
+		{
+		if(subscribe == false)
+		{
+			parentsemail = "0";
+			result = "mail removed";
+		}
+		preparedStatement = connect.prepareStatement("update tafeltrainer.user set emailparent = ? where loginname = ?"
+				+ " and password = ? ");
+		preparedStatement.setString(1, parentsemail);
+		preparedStatement.setString(2, username);
+		preparedStatement.setString(3, password);
+		preparedStatement.executeUpdate();
+		preparedStatement.close();
+		connect.close();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			result = "failure";
+		}
+		finally
+		{
+			if (connect != null)
+				try
+				{
+					connect.close();
+				} catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+		}
+		return result;
+	}
+	
+	public UserResults getUserMetaData(User user)
+	{
+		UserResults ur = null;
+		connect = getConn();
+		try
+		{
+			preparedStatement = connect.prepareStatement("select * from tafeltrainer.summaryres"
+					+ " where userid =  " + user.getId() );
+			resultSet = preparedStatement.executeQuery();
+			
+			while (resultSet.next())
+			{
+				 ur = new UserResults(resultSet.getInt("userid"), resultSet.getString("username"),
+						resultSet.getString("familyname"), resultSet.getDouble("accuracy"),
+						resultSet.getInt("howmuchopgaven"), resultSet.getDouble("speed"));
+			}
+			preparedStatement.close();
+			resultSet.close();
+			connect.close();
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		} finally
+		{
+			if (connect != null)
+				try
+				{
+					connect.close();
+				} catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+		}
+		return ur;
+	}
+
+	
+	
+	
 	/**
 	 * berekent het foutpercentage voor een bepaalde tafel en retourneert het
 	 * tafelresultaat-object
@@ -805,10 +913,9 @@ public class MySQLAccess
 		{
 			System.out.println("fout in gettafelresults_1");
 			e.printStackTrace();
-		}
-		finally
+		} finally
 		{
-			if(connect != null)
+			if (connect != null)
 				try
 				{
 					connect.close();
@@ -873,10 +980,9 @@ public class MySQLAccess
 		{
 			System.out.println("fout in gettafelresults");
 			e.printStackTrace();
-		}
-		finally
+		} finally
 		{
-			if(connect != null)
+			if (connect != null)
 				try
 				{
 					connect.close();
@@ -913,10 +1019,9 @@ public class MySQLAccess
 		{
 			System.out.println("fout in geterrors");
 			e.printStackTrace();
-		}
-		finally
+		} finally
 		{
-			if(connect != null)
+			if (connect != null)
 				try
 				{
 					connect.close();
@@ -953,10 +1058,9 @@ public class MySQLAccess
 		} catch (Exception e)
 		{
 			System.out.println("foutje in getaveragespeed");
-		}
-		finally
+		} finally
 		{
-			if(connect != null)
+			if (connect != null)
 				try
 				{
 					connect.close();
@@ -992,10 +1096,9 @@ public class MySQLAccess
 		} catch (SQLException s)
 		{
 			System.out.println("ergens iets fout...in howmuchopgaven");
-		}
-		finally
+		} finally
 		{
-			if(connect != null)
+			if (connect != null)
 				try
 				{
 					connect.close();
@@ -1061,10 +1164,9 @@ public class MySQLAccess
 		{
 			System.out.println("fout in updatesuperuser");
 			e.printStackTrace();
-		}
-		finally
+		} finally
 		{
-			if(connect != null)
+			if (connect != null)
 				try
 				{
 					connect.close();
@@ -1102,10 +1204,9 @@ public class MySQLAccess
 		{
 			System.out.println("fout in updateuser");
 			e.printStackTrace();
-		}
-		finally
+		} finally
 		{
-			if(connect != null)
+			if (connect != null)
 				try
 				{
 					connect.close();
@@ -1147,10 +1248,9 @@ public class MySQLAccess
 		{
 			System.out.println("fout in administratorUpdatesUser");
 			e.printStackTrace();
-		}
-		finally
+		} finally
 		{
-			if(connect != null)
+			if (connect != null)
 				try
 				{
 					connect.close();
@@ -1185,10 +1285,9 @@ public class MySQLAccess
 		{
 			System.out.println("fout in writeopgave");
 			e.printStackTrace();
-		}
-		finally
+		} finally
 		{
-			if(connect != null)
+			if (connect != null)
 				try
 				{
 					connect.close();
@@ -1255,10 +1354,9 @@ public class MySQLAccess
 		{
 			System.out.println("fout in retrieve session");
 			e.printStackTrace();
-		}
-		finally
+		} finally
 		{
-			if(connect != null)
+			if (connect != null)
 				try
 				{
 					connect.close();
@@ -1297,23 +1395,21 @@ public class MySQLAccess
 				connect.close();
 				return;
 
-			}
-			catch (Exception e)
+			} catch (Exception e)
 			{
 				System.out.println("fout in writesession");
 				e.printStackTrace();
+			} finally
+			{
+				if (connect != null)
+					try
+					{
+						connect.close();
+					} catch (SQLException e)
+					{
+						e.printStackTrace();
+					}
 			}
-		finally
-		{
-			if(connect != null)
-				try
-				{
-					connect.close();
-				} catch (SQLException e)
-				{
-					e.printStackTrace();
-				}
-		}
 
 		if (flag == 1)
 			try
@@ -1339,18 +1435,17 @@ public class MySQLAccess
 			{
 				System.out.println("fout in writesession");
 				e.printStackTrace();
+			} finally
+			{
+				if (connect != null)
+					try
+					{
+						connect.close();
+					} catch (SQLException e)
+					{
+						e.printStackTrace();
+					}
 			}
-		finally
-		{
-			if(connect != null)
-				try
-				{
-					connect.close();
-				} catch (SQLException e)
-				{
-					e.printStackTrace();
-				}
-		}
 	}
 
 	public User getUser(String loginname, String password)
@@ -1368,7 +1463,7 @@ public class MySQLAccess
 						resultSet.getString("name"), resultSet.getString("familyname"),
 						resultSet.getString("groupname"), resultSet.getString("loginname"),
 						resultSet.getString("password"), resultSet.getInt("money"),
-						resultSet.getBoolean("houindegaten"));
+						resultSet.getBoolean("houindegaten"), resultSet.getBoolean("hasdonesurvey"));
 			}
 			preparedStatement.close();
 			resultSet.close();
@@ -1377,10 +1472,9 @@ public class MySQLAccess
 		{
 			System.out.println("fout in getuser of user onbekend");
 			return resultuser;
-		}
-		finally
+		} finally
 		{
-			if(connect != null)
+			if (connect != null)
 				try
 				{
 					connect.close();
@@ -1389,8 +1483,51 @@ public class MySQLAccess
 					e.printStackTrace();
 				}
 		}
-		
 		return resultuser;
+	}
+
+	public ArrayList<User> getUserEmailList()
+	{
+		ArrayList<User> users = new ArrayList<User>();
+		connect = getConn();
+		try
+		{
+			preparedStatement = connect.prepareStatement("select * from tafeltrainer.user");
+			resultSet = preparedStatement.executeQuery();
+			while (resultSet.next())
+			{
+				if (!(resultSet.getString("emailparent").equals("0")))
+				{
+					User resultuser = null;
+					resultuser = new User(resultSet.getInt("id"), resultSet.getString("emailsuperuser"),
+							resultSet.getString("name"), resultSet.getString("familyname"),
+							resultSet.getString("groupname"), resultSet.getString("loginname"),
+							resultSet.getString("password"), resultSet.getInt("money"),
+							resultSet.getBoolean("houindegaten"), resultSet.getBoolean("hasdonesurvey"));
+					resultuser.setEmailparent(resultSet.getString("emailparent"));
+					users.add(resultuser);
+				}
+			}
+			preparedStatement.close();
+			resultSet.close();
+			connect.close();
+		} catch (Exception e)
+		{
+			System.out.println("fout in getuseremaillist of user onbekend");
+			return users;
+		} finally
+		{
+			if (connect != null)
+				try
+				{
+					connect.close();
+				} catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+		}
+		return users;
+
 	}
 
 	public User getUserById(int id)
@@ -1416,10 +1553,9 @@ public class MySQLAccess
 		{
 			System.out.println("fout in getuserById of user onbekend");
 			return resultuser;
-		}
-		finally
+		} finally
 		{
-			if(connect != null)
+			if (connect != null)
 				try
 				{
 					connect.close();

@@ -47,6 +47,34 @@ public Label contentlabel;
         box.add(panel);
 	}
 	
+	public AlertWidget(String messages)
+	{
+		box = new DialogBox();
+        contentlabel = new Label(messages);
+		header = "";
+        box.setPixelSize(300, 400);
+        box.setStyleName("popup2");
+        VerticalPanel panel = new VerticalPanel();
+        panel.setBorderWidth(0);
+        box.setText(header);
+        Image img1 = new Image("/images/startpage_curious.png");
+        img1.setHeight("200px");
+        panel.add(img1);
+        panel.add(contentlabel);
+        Button buttonClose = new Button("OK") ;
+        buttonClose.addClickHandler(new buttonCloseClickHandler());
+        buttonClose.setStyleName("standardbutton");
+        Label emptyLabel = new Label("");
+        emptyLabel.setSize("auto","25px");
+        panel.add(emptyLabel);
+        panel.add(emptyLabel);
+        buttonClose.setWidth("90px");
+        panel.add(buttonClose);
+        panel.setCellHorizontalAlignment(buttonClose, HasAlignment.ALIGN_CENTER);
+        box.add(panel);
+	}
+	
+	
 	public class buttonCloseClickHandler implements ClickHandler
 	{
 

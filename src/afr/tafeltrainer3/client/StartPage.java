@@ -120,6 +120,7 @@ public class StartPage extends Composite
 		flex1.setWidget(1, 0, vpanel1);
 		
 		VerticalPanel vpanel11 = new VerticalPanel();
+		vpanel11.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		HTML sierlijn = new HTML("<HR width = '380px' size = '2'>");
 		vpanel11.add(sierlijn);
 		hpanel20 = new HorizontalPanel();
@@ -131,6 +132,9 @@ public class StartPage extends Composite
 		hpanel20.add(hyper20b);
 		hpanel20.setSpacing(20);
 		vpanel11.add(hpanel20);
+		Anchor hyper20e = new Anchor("oudermail",true);
+		hyper20e.addClickHandler(new anchor20eClickHandler());
+		vpanel11.add(hyper20e);
 		flex1.setWidget(1, 1, vpanel11);
 		
 		
@@ -183,6 +187,9 @@ public class StartPage extends Composite
 		
 	}
 	
+	
+	
+	
 	private class anchor20aClickHandler implements ClickHandler
 	{
 	@Override
@@ -221,14 +228,16 @@ public class StartPage extends Composite
 			main.showDemoSuperuserpage();
 		}
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	}
+	
+	private class anchor20eClickHandler implements ClickHandler
+	{
+	@Override
+		public void onClick(ClickEvent event) 
+		{
+			main.showPageParentMenu();
+		}
+	}	
+
+	
 }

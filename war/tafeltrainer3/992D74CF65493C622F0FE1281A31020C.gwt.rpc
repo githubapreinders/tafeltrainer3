@@ -1,4 +1,6 @@
+@FinalFields, false
 afr.tafeltrainer3.client.events.DataEvent, true, true, false, false, afr.tafeltrainer3.client.events.DataEvent/675585529, 675585529
+afr.tafeltrainer3.client.events.EventAddParentsMailaddress, true, true, false, false, afr.tafeltrainer3.client.events.EventAddParentsMailaddress/3276019546, 3276019546
 afr.tafeltrainer3.client.events.EventAddSuperUser, true, true, false, false, afr.tafeltrainer3.client.events.EventAddSuperUser/944019961, 944019961
 afr.tafeltrainer3.client.events.EventGetGroup, true, true, false, false, afr.tafeltrainer3.client.events.EventGetGroup/3545136997, 3545136997
 afr.tafeltrainer3.client.events.EventGetGroupResults, true, true, false, false, afr.tafeltrainer3.client.events.EventGetGroupResults/2570923959, 2570923959
@@ -16,10 +18,11 @@ afr.tafeltrainer3.shared.Opgave, false, false, true, true, afr.tafeltrainer3.sha
 afr.tafeltrainer3.shared.Product, true, true, true, true, afr.tafeltrainer3.shared.Product/1689316093, 1689316093
 afr.tafeltrainer3.shared.SimpleService, false, false, false, false, _, 3395607720
 afr.tafeltrainer3.shared.SuperUser, true, true, true, true, afr.tafeltrainer3.shared.SuperUser/2464716267, 2464716267
+afr.tafeltrainer3.shared.SurveyResult, false, false, true, true, afr.tafeltrainer3.shared.SurveyResult/4221690673, 4221690673
 afr.tafeltrainer3.shared.TafelResult, true, true, false, false, afr.tafeltrainer3.shared.TafelResult/3484746387, 3484746387
-afr.tafeltrainer3.shared.User, true, true, true, true, afr.tafeltrainer3.shared.User/195849205, 195849205
+afr.tafeltrainer3.shared.User, true, true, true, true, afr.tafeltrainer3.shared.User/1244302680, 1244302680
 afr.tafeltrainer3.shared.UserResults, true, true, false, false, afr.tafeltrainer3.shared.UserResults/1848331662, 1848331662
-com.google.gwt.i18n.shared.impl.DateRecord, true, true, false, false, com.google.gwt.i18n.shared.impl.DateRecord/3375188634, 3375188634
+com.google.gwt.i18n.shared.impl.DateRecord, true, true, false, false, com.google.gwt.i18n.shared.impl.DateRecord/3173882066, 3173882066
 com.google.gwt.user.client.rpc.IncompatibleRemoteServiceException, true, true, true, true, com.google.gwt.user.client.rpc.IncompatibleRemoteServiceException/3936916533, 3936916533
 com.google.gwt.user.client.rpc.RpcTokenException, true, true, false, false, com.google.gwt.user.client.rpc.RpcTokenException/2345075298, 2345075298
 com.google.gwt.user.client.rpc.XsrfToken, false, false, true, true, com.google.gwt.user.client.rpc.XsrfToken/4254043109, 4254043109

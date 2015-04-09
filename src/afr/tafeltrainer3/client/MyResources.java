@@ -109,26 +109,26 @@ public interface MyResources extends ClientBundle
 	  @Source("/images/luchtdieren/zwaluw.png")
 	  ImageResource zwaluw();
 	  
-	  @Source("/images/stripfiguren/asterix.png")
-	  ImageResource asterix();
-	  @Source("/images/stripfiguren/donald_duck.png")
-	  ImageResource donald_duck();
-	  @Source("/images/stripfiguren/garfield.png")
-	  ImageResource garfield();
-	  @Source("/images/stripfiguren/homersimpson.png")
-	  ImageResource homersimpson();
-	  @Source("/images/stripfiguren/lucky_luke.png")
-	  ImageResource lucky_luke();
-	  @Source("/images/stripfiguren/rozepanter.png")
-	  ImageResource rozepanter();
-	  @Source("/images/stripfiguren/scoobydoo.png")
-	  ImageResource scoobydoo();
-	  @Source("/images/stripfiguren/shrek.png")
-	  ImageResource shrek();
-	  @Source("/images/stripfiguren/snoopy.png")
-	  ImageResource snoopy();
-	  @Source("/images/stripfiguren/spongebob.png")
-	  ImageResource spongebob();
+	  @Source("/images/stripfiguren/Asterix.png")
+	  ImageResource Asterix();
+	  @Source("/images/stripfiguren/Donald_Duck.png")
+	  ImageResource Donald_Duck();
+	  @Source("/images/stripfiguren/Garfield.png")
+	  ImageResource Garfield();
+	  @Source("/images/stripfiguren/Homer_Simpson.png")
+	  ImageResource Homer_Simpson();
+	  @Source("/images/stripfiguren/Lucky_Luke.png")
+	  ImageResource Lucky_Luke();
+	  @Source("/images/stripfiguren/Roze_Panter.png")
+	  ImageResource Roze_Panter();
+	  @Source("/images/stripfiguren/Scooby_Doo.png")
+	  ImageResource Scooby_Doo();
+	  @Source("/images/stripfiguren/Shrek.png")
+	  ImageResource Shrek();
+	  @Source("/images/stripfiguren/Snoopy.png")
+	  ImageResource Snoopy();
+	  @Source("/images/stripfiguren/Sponge_Bob.png")
+	  ImageResource Sponge_Bob();
 	  
 	  @Source("/images/voetballers/Arjen_Robben.png")
 	  ImageResource Arjen_Robben();
@@ -157,28 +157,28 @@ public interface MyResources extends ClientBundle
 	  @Source("/images/voetballers/Zlatan_Ibrahimovic.png")
 	  ImageResource Zlatan_Ibrahimovic();
 	  
-	  @Source("/images/wereldsteden/amsterdam.png")
-	  ImageResource amsterdam();
-	  @Source("/images/wereldsteden/beijing.png")
-	  ImageResource beijing();
-	  @Source("/images/wereldsteden/istanboel.png")
-	  ImageResource istanboel();
-	  @Source("/images/wereldsteden/londen.png")
-	  ImageResource londen();
-	  @Source("/images/wereldsteden/mexicocity.png")
-	  ImageResource mexicocity();
-	  @Source("/images/wereldsteden/moskou.png")
-	  ImageResource moskou();
-	  @Source("/images/wereldsteden/newyork.png")
-	  ImageResource newyork();
-	  @Source("/images/wereldsteden/parijs.png")
-	  ImageResource parijs();
-	  @Source("/images/wereldsteden/riodejaneiro.png")
-	  ImageResource riodejaneiro();
-	  @Source("/images/wereldsteden/sidney.png")
-	  ImageResource sidney();
-	  @Source("/images/wereldsteden/singapore.png")
-	  ImageResource singapore();
+	  @Source("/images/wereldsteden/Amsterdam.png")
+	  ImageResource Amsterdam();
+	  @Source("/images/wereldsteden/Beijing.png")
+	  ImageResource Beijing();
+	  @Source("/images/wereldsteden/Istanboel.png")
+	  ImageResource Istanboel();
+	  @Source("/images/wereldsteden/Londen.png")
+	  ImageResource Londen();
+	  @Source("/images/wereldsteden/Mexico_City.png")
+	  ImageResource Mexico_City();
+	  @Source("/images/wereldsteden/Moskou.png")
+	  ImageResource Moskou();
+	  @Source("/images/wereldsteden/New_York.png")
+	  ImageResource New_York();
+	  @Source("/images/wereldsteden/Parijs.png")
+	  ImageResource Parijs();
+	  @Source("/images/wereldsteden/Rio_de_Janeiro.png")
+	  ImageResource Rio_de_Janeiro();
+	  @Source("/images/wereldsteden/Sidney.png")
+	  ImageResource Sidney();
+	  @Source("/images/wereldsteden/Singapore.png")
+	  ImageResource Singapore();
 	  
 	  @Source("/images/zeedieren/axolotl.png")
 	  ImageResource axolotl();

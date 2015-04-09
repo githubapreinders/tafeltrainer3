@@ -15,8 +15,10 @@ public class User implements IsSerializable
 	String groupname;
 	String loginname;
 	String password;
+	String emailparent;
 	int money;
 	boolean houindegaten;
+	boolean surveydone;
 	
 	
 	public User()
@@ -30,7 +32,7 @@ public class User implements IsSerializable
 		this.password = "defpassw";
 		this.money = 0;
 		this.houindegaten = false;
-		
+		this.emailparent = "0";
 	}
 
 	public User(int id, String emailsuperuser, String name, String familyname,
@@ -47,8 +49,36 @@ public class User implements IsSerializable
 		this.houindegaten=houindegaten;
 	}
 	
+	public User(int id, String emailsuperuser, String name, String familyname,
+			String groupname, String loginname, String password, int money, boolean houindegaten, boolean surveydone) 
+	{
+		this.id = id;
+		this.emailsuperuser = emailsuperuser;
+		this.name = name;
+		this.familyname = familyname;
+		this.groupname = groupname;
+		this.loginname = loginname;
+		this.password = password;
+		this.money = money;
+		this.houindegaten=houindegaten;
+		this.surveydone=surveydone;
+	}
 
 	
+	
+	
+	
+	
+	public boolean isSurveydone()
+	{
+		return surveydone;
+	}
+
+	public void setSurveydone(boolean surveydone)
+	{
+		this.surveydone = surveydone;
+	}
+
 	public void addMoney(int money)
 	{
 		this.money+=money;
@@ -135,6 +165,16 @@ public class User implements IsSerializable
 	
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getEmailparent()
+	{
+		return emailparent;
+	}
+
+	public void setEmailparent(String emailparent)
+	{
+		this.emailparent = emailparent;
 	}
 
 }

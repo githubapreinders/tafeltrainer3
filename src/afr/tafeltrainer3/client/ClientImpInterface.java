@@ -4,11 +4,16 @@ package afr.tafeltrainer3.client;
 import afr.tafeltrainer3.shared.Opgave;
 import afr.tafeltrainer3.shared.Product;
 import afr.tafeltrainer3.shared.SuperUser;
+import afr.tafeltrainer3.shared.SurveyResult;
 import afr.tafeltrainer3.shared.User;
 
 
 public interface ClientImpInterface {
 
+	public void addParentsMailaddress(String username, String password, String emailaddress, boolean subscribed);
+	
+	public void submitSurveyResult(SurveyResult surveyresult);
+	
 	public void sendPw(String emailadress);
 	
 	public void sendAnotherVerificationMail(SuperUser superuser);

@@ -135,8 +135,7 @@ public class Opgave implements Serializable{
 	{
 		String output = String.valueOf(this.factor1) + " X " +
 				String.valueOf(this.factor2) + " = " +
-				String.valueOf(this.useranswer) + "\t Tijd: " +
-				String.valueOf(this.time) + " sec";
+				String.valueOf(this.antwoord) ;
 		return output;
 	}
 

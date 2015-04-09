@@ -8,7 +8,6 @@
 		<schedule>every sunday 22:00</schedule>
 	</cron>
 
-
 	<cron>
 		<url>/tafeltrainer3/src/afr/tafeltrainer3/server/MailCronServletThree</url>
 		<description>Deze job controleert elke derde week van de maand 	</description>
@@ -20,6 +19,15 @@
 		<description>Deze job controleert elke eerste week van de maand 	</description>
 		<schedule>first sunday 22:30</schedule>
 	</cron>
+	
+	<cron>
+		<url>/tafeltrainer3/src/afr/tafeltrainer3/server/MailCronServletParents</url>
+		<description>Deze job stuurt elke week een mail naar de ouders </description>
+		<schedule>every sunday 22:30</schedule>
+	</cron>
+	
+	
+	
 	
 </cronentries>
 

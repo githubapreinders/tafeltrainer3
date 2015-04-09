@@ -7,6 +7,7 @@ import afr.tafeltrainer3.shared.SimpleService;
 import afr.tafeltrainer3.shared.SimpleServiceAsync;
 import afr.tafeltrainer3.shared.Opgave;
 import afr.tafeltrainer3.shared.SuperUser;
+import afr.tafeltrainer3.shared.SurveyResult;
 import afr.tafeltrainer3.shared.User;
 
 import com.google.gwt.core.client.GWT;
@@ -36,6 +37,24 @@ public class ClientImp extends Composite implements ClientImpInterface
 
 	}
 
+	@Override
+	public void addParentsMailaddress(String username, String password, String emailaddress, boolean subscribed)
+	{
+		this.service.addParentsMailaddress(username, password, emailaddress, subscribed, new DefaultCallBack());
+	}
+
+	
+	
+	
+	public void submitSurveyResult(SurveyResult sr)
+	{
+		this.service.submitSurveyResult(sr , new DefaultCallBack());
+		
+	}
+
+	
+	
+	
 	@Override
 	public void sendPw(String emailadress)
 	{
@@ -223,4 +242,6 @@ public class ClientImp extends Composite implements ClientImpInterface
 		return this.gui;
 	}
 
+	
+	
 }

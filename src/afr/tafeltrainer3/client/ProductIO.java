@@ -10,9 +10,9 @@ public class ProductIO
 	{
 	switch (index)
 	{
-	case 1 : return new Product(index,"/images/shop/stripfiguren/snoopy.png",40,Productcategorie.cartoons);
+	case 1 : return new Product(index,"/images/shop/stripfiguren/Snoopy.png",40,Productcategorie.cartoons);
 	
-	case 2 : return new Product(index,"/images/shop/stripfiguren/spongebob.png",40,Productcategorie.cartoons);
+	case 2 : return new Product(index,"/images/shop/stripfiguren/Sponge_Bob.png",40,Productcategorie.cartoons);
 	
 	case 3 : return new Product(index,"/images/shop/plaatje3.png",30,Productcategorie.dieren);
 	
@@ -156,41 +156,41 @@ public class ProductIO
 	
 	case 73 : return new Product(index,"/images/shop/grappig/verklede_hond.png",70,Productcategorie.grappig);
 	
-	case 74 : return new Product(index,"/images/shop/wereldsteden/amsterdam.png",40,Productcategorie.wereldsteden);
+	case 74 : return new Product(index,"/images/shop/wereldsteden/Amsterdam.png",40,Productcategorie.wereldsteden);
 	
-	case 75 : return new Product(index,"/images/shop/wereldsteden/beijing.png",40,Productcategorie.wereldsteden);
+	case 75 : return new Product(index,"/images/shop/wereldsteden/Beijing.png",40,Productcategorie.wereldsteden);
 	
-	case 76 : return new Product(index,"/images/shop/wereldsteden/istanboel.png",45,Productcategorie.wereldsteden);
+	case 76 : return new Product(index,"/images/shop/wereldsteden/Istanboel.png",45,Productcategorie.wereldsteden);
 	
-	case 77 : return new Product(index,"/images/shop/wereldsteden/londen.png",45,Productcategorie.wereldsteden);
+	case 77 : return new Product(index,"/images/shop/wereldsteden/Londen.png",45,Productcategorie.wereldsteden);
 	
-	case 78 : return new Product(index,"/images/shop/wereldsteden/mexicocity.png",50,Productcategorie.wereldsteden);
+	case 78 : return new Product(index,"/images/shop/wereldsteden/Mexico_City.png",50,Productcategorie.wereldsteden);
 	
-	case 79 : return new Product(index,"/images/shop/wereldsteden/moskou.png",50,Productcategorie.wereldsteden);
+	case 79 : return new Product(index,"/images/shop/wereldsteden/Moskou.png",50,Productcategorie.wereldsteden);
 	
-	case 80 : return new Product(index,"/images/shop/wereldsteden/riodejaneiro.png",55,Productcategorie.wereldsteden);
+	case 80 : return new Product(index,"/images/shop/wereldsteden/Rio_de_Janeiro.png",55,Productcategorie.wereldsteden);
 	
-	case 81 : return new Product(index,"/images/shop/wereldsteden/sidney.png",55,Productcategorie.wereldsteden);
+	case 81 : return new Product(index,"/images/shop/wereldsteden/Sidney.png",55,Productcategorie.wereldsteden);
 	
-	case 82 : return new Product(index,"/images/shop/wereldsteden/singapore.png",60,Productcategorie.wereldsteden);
+	case 82 : return new Product(index,"/images/shop/wereldsteden/Singapore.png",60,Productcategorie.wereldsteden);
 	
-	case 83 : return new Product(index,"/images/shop/wereldsteden/parijs.png",60,Productcategorie.wereldsteden);
+	case 83 : return new Product(index,"/images/shop/wereldsteden/Parijs.png",60,Productcategorie.wereldsteden);
 	
-	case 84 : return new Product(index,"/images/shop/stripfiguren/asterix.png",40,Productcategorie.cartoons);
+	case 84 : return new Product(index,"/images/shop/stripfiguren/Asterix.png",40,Productcategorie.cartoons);
 
-	case 85 : return new Product(index,"/images/shop/stripfiguren/donald_duck.png",45,Productcategorie.cartoons);
+	case 85 : return new Product(index,"/images/shop/stripfiguren/Donald_Duck.png",45,Productcategorie.cartoons);
 	
-	case 86 : return new Product(index,"/images/shop/stripfiguren/garfield.png",45,Productcategorie.cartoons);
+	case 86 : return new Product(index,"/images/shop/stripfiguren/Garfield.png",45,Productcategorie.cartoons);
 	
-	case 87 : return new Product(index,"/images/shop/stripfiguren/homersimpson.png",50,Productcategorie.cartoons);
+	case 87 : return new Product(index,"/images/shop/stripfiguren/Homer_Simpson.png",50,Productcategorie.cartoons);
 	
-	case 88 : return new Product(index,"/images/shop/stripfiguren/lucky_luke.png",50,Productcategorie.cartoons);
+	case 88 : return new Product(index,"/images/shop/stripfiguren/Lucky_Luke.png",50,Productcategorie.cartoons);
 	
-	case 89 : return new Product(index,"/images/shop/stripfiguren/rozepanter.png",55,Productcategorie.cartoons);
+	case 89 : return new Product(index,"/images/shop/stripfiguren/Roze_Panter.png",55,Productcategorie.cartoons);
 	
-	case 90 : return new Product(index,"/images/shop/stripfiguren/scoobydoo.png",55,Productcategorie.cartoons);
+	case 90 : return new Product(index,"/images/shop/stripfiguren/Scooby_Doo.png",55,Productcategorie.cartoons);
 	
-	case 91 : return new Product(index,"/images/shop/stripfiguren/shrek.png",60,Productcategorie.cartoons);
+	case 91 : return new Product(index,"/images/shop/stripfiguren/Shrek.png",60,Productcategorie.cartoons);
 	
 	//case 92 : return new Product(index,"/images/shop/stripfiguren/snoopy.png",40,Productcategorie.cartoons);
 	

@@ -62,12 +62,14 @@ public class Tafeltrainer3Gui_mobile extends Tafeltrainer3Gui {
 	public Label lbl2;
 	public Label lbl3;
 	public Label lbl4;
+	public Label lbl_forhpanel11;
 	public HorizontalPanel hpanel_main ;
 	public HorizontalPanel hpanel2;
 	public HorizontalPanel hpanel3;
 	public HorizontalPanel hpanelrow0a;
 	public HorizontalPanel hpanelrow0b;
 	public HorizontalPanel hpanel40;
+	public HorizontalPanel hpanel11;
 	public FlowPanel fpanel1;
 	public Opgave opg;
 	public OpgaveSoort opgavesoort;
@@ -94,7 +96,9 @@ public class Tafeltrainer3Gui_mobile extends Tafeltrainer3Gui {
 		txt10 = new TextBox();
 		fpanel1 = new FlowPanel();
 		hpanel_main = new HorizontalPanel();
-		
+		hpanel11 = new HorizontalPanel();
+		lbl_forhpanel11 = new Label("");
+
 		initWidget(flex1);
 		// formatteren van de flextable1
 		this.flex1.setStyleName("tafeltabel");
@@ -165,7 +169,8 @@ public class Tafeltrainer3Gui_mobile extends Tafeltrainer3Gui {
 		flex1.setWidget(0, 0, vpanel1);
 
 		lbl3.setText("    ");
-		this.flex1.setWidget(0, 1, lbl3);
+		//Changed
+		//this.flex1.setWidget(0, 1, lbl3);
 
 		numpad = new NumPadWidget(this);
 		this.flex1.getFlexCellFormatter().setVerticalAlignment(0, 2, HasVerticalAlignment.ALIGN_BOTTOM);
@@ -197,8 +202,17 @@ public class Tafeltrainer3Gui_mobile extends Tafeltrainer3Gui {
 		this.fpanel1.setStyleName("timerbar");
 		Image timerbardefault = new Image("/images/defaulttimerpicture.jpg");
 		fpanel1.add(timerbardefault);
-		this.flex1.setWidget(1, 1, fpanel1);
-
+		//CHANGED:
+		//this.flex1.setWidget(1, 1, fpanel1);
+		
+		this.hpanel11.add(lbl3);
+		this.hpanel11.add(lbl_forhpanel11);
+		this.hpanel11.setWidth("320px");
+		this.hpanel11.setCellHorizontalAlignment(lbl3, HasHorizontalAlignment.ALIGN_LEFT);
+		this.hpanel11.setCellHorizontalAlignment(lbl_forhpanel11, HasHorizontalAlignment.ALIGN_RIGHT);
+		
+		this.flex1.setWidget(0, 1, fpanel1);
+		this.flex1.setWidget(1, 1, hpanel11);
 		// derde rij met het opgavenlabel en de invulbox voor het antwoord
 		this.lbl2.setStyleName("opgavenlabel");
 
@@ -257,7 +271,7 @@ public class Tafeltrainer3Gui_mobile extends Tafeltrainer3Gui {
 				numpad.btn12.setEnabled(true);
 				corrects = 0;
 				errors = 0;
-				beloningshoogte = new BeloningsHoogte();
+				beloningshoogte = new BeloningsHoogte(main);
 				boxes = new CheckBox[] { chk2, chk3, chk4, chk5, chk6, chk7, chk8, chk9, chka, chkm };
 				tim = new TafelTimer(getGui());
 				opgavesoort = new OpgaveSoort(boxes);
@@ -525,6 +539,7 @@ public class Tafeltrainer3Gui_mobile extends Tafeltrainer3Gui {
 				lbl3.setStyleName("labelgoedgekeurd");
 				lbl3.setText("score :" + Utilities.round(percentage, 1) + "%");
 				lbl2.setText("");
+				lbl_forhpanel11.setText("");
 				errors = 0;
 				corrects = 0;
 				tim.cancel();
@@ -721,10 +736,12 @@ public class Tafeltrainer3Gui_mobile extends Tafeltrainer3Gui {
 	{
 		beloning = 0;
 		this.lbl3.setText(opg.toString());
-
+		this.lbl_forhpanel11.setText(opg.getTime() + " sec");
+		
 		if (opg.getAntwoord() == opg.getUseranswer())
 		{
 			lbl3.setStyleName("labelgoedgekeurd");
+			lbl_forhpanel11.setStyleName("labelgoedgekeurd");
 			this.corrects++;
 			beloning = beloningshoogte.getBeloning(true, chkm.getValue());
 			main.getUser().addMoney(beloning);
@@ -733,6 +750,7 @@ public class Tafeltrainer3Gui_mobile extends Tafeltrainer3Gui {
 		} else
 		{
 			lbl3.setStyleName("labelafgekeurd");
+			lbl_forhpanel11.setStyleName("labelafgekeurd");
 			this.errors++;
 			beloning = beloningshoogte.getBeloning(false, chkm.getValue());
 			main.getUser().addMoney(beloning);

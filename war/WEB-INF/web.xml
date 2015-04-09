@@ -53,6 +53,20 @@
 	</servlet-mapping>
 	
 	
+	<servlet>
+		<servlet-name>mailcronservletparents</servlet-name>
+		<servlet-class>afr.tafeltrainer3.server.MailCronServletParents
+		</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>mailcronservletparents</servlet-name>
+		<url-pattern>/tafeltrainer3/src/afr/tafeltrainer3/server/MailCronServletParents
+		</url-pattern>
+	</servlet-mapping>
+	
+	
+	
 	
 	<!-- Default page to serve -->
 	<welcome-file-list>
