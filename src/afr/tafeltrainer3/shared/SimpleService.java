@@ -1,5 +1,8 @@
 package afr.tafeltrainer3.shared;
+import java.util.ArrayList;
+
 import afr.tafeltrainer3.client.events.DataEvent;
+import afr.tafeltrainer3.client.shop.Product;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.rpc.RemoteService;
@@ -9,6 +12,10 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
 public interface SimpleService extends RemoteService {
 
+	public void emptyAndUpdateUser(ArrayList<Opgave> opgaven, int userid, int money);
+	
+	public void submitOpgavenSet(ArrayList<Opgave> opgaven, int userid);
+	
 	public DataEvent addParentsMailaddress(String username, String password, String emailaddress, boolean subscribed);
 	
 	public void submitSurveyResult(SurveyResult surveyresult);

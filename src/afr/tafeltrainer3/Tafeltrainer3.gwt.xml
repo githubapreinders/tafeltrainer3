@@ -8,6 +8,7 @@
 	<inherits name='com.google.gwt.user.User' />
 	<inherits name="com.google.gwt.i18n.I18N" />
 	<inherits name='com.google.gwt.visualization.Visualization' />
+	 <inherits name="com.google.gwt.logging.Logging"/>
 	<!-- <extend-property name="locale" values="en" />
 	<extend-property name="locale" values="nl_NL" /> 
 	<extend-property name="locale" values="nl" />
@@ -15,11 +16,15 @@
 
 
 	<!-- Specify the app entry point class. -->
-	<entry-point class='afr.tafeltrainer3.client.Tafeltrainer3' />
+	<entry-point class='afr.tafeltrainer3.main.Tafeltrainer3' />
 	<!-- Specify the paths for translatable code -->
 	<source path='client' />
 	<source path='shared' />
-
+	<source path='main' />
+	<source path='utils' />
+	<source path='widgets' />
+	<source path='utils' />
+	
 	<!-- Determine if we are in a mobile browser. -->
 	<define-property name="formfactor" values="desktop,tablet,mobile" />
 	<collapse-property name="formfactor" values="*" />
@@ -62,18 +67,18 @@
   ]]>
 	</property-provider>
 
-	<replace-with class="afr.tafeltrainer3.client.Tafeltrainer3Gui_mobile">
-		<when-type-is class="afr.tafeltrainer3.client.Tafeltrainer3Gui" />
+	<replace-with class="afr.tafeltrainer3.client.pages.Tafeltrainer3Gui_mobile">
+		<when-type-is class="afr.tafeltrainer3.client.pages.Tafeltrainer3Gui" />
 		<when-property-is name="formfactor" value="tablet" />
 	</replace-with>
 
-	<replace-with class="afr.tafeltrainer3.client.Tafeltrainer3Gui_desktop">
-		<when-type-is class="afr.tafeltrainer3.client.Tafeltrainer3Gui" />
+	<replace-with class="afr.tafeltrainer3.client.pages.Tafeltrainer3Gui_desktop">
+		<when-type-is class="afr.tafeltrainer3.client.pages.Tafeltrainer3Gui" />
 		<when-property-is name="formfactor" value="mobile" />
 	</replace-with>
 
-	<replace-with class="afr.tafeltrainer3.client.Tafeltrainer3Gui_desktop">
-		<when-type-is class="afr.tafeltrainer3.client.Tafeltrainer3Gui" />
+	<replace-with class="afr.tafeltrainer3.client.pages.Tafeltrainer3Gui_desktop">
+		<when-type-is class="afr.tafeltrainer3.client.pages.Tafeltrainer3Gui" />
 		<when-property-is name="formfactor" value="desktop" />
 	</replace-with>
 

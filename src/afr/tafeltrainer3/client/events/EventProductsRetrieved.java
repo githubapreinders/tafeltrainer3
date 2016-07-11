@@ -3,7 +3,7 @@ package afr.tafeltrainer3.client.events;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import afr.tafeltrainer3.shared.Product;
+import afr.tafeltrainer3.client.shop.Product;
 
 public class EventProductsRetrieved extends DataEvent implements Serializable
 {

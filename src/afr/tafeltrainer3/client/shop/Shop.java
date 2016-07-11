@@ -1,28 +1,16 @@
 package afr.tafeltrainer3.client.shop;
 
-import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
-import afr.tafeltrainer3.client.MainView;
-import afr.tafeltrainer3.client.MyResources;
-import afr.tafeltrainer3.client.ProductIO;
-import afr.tafeltrainer3.client.Utilities;
-import afr.tafeltrainer3.client.tafeltrainer3messages;
-import afr.tafeltrainer3.shared.Product;
-import afr.tafeltrainer3.shared.ProductWidget;
+import afr.tafeltrainer3.main.MainView;
+import afr.tafeltrainer3.main.tafeltrainer3messages;
+import afr.tafeltrainer3.utils.Utilities;
 
-import com.google.gwt.core.shared.GWT;
-import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlexTable;
@@ -35,7 +23,6 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import com.google.gwt.user.client.ui.Widget;
 
 public class Shop extends Composite {
 
@@ -43,6 +30,7 @@ private ArrayList<Product> prodlist;
 public ArrayList<Product> incart;
 public ArrayList<Product> incarthotlist;
 private FlexTable flex1;
+private FlexTable flex10;
 public HorizontalPanel hpanel10;
 private HorizontalPanel hpanel00;
 private HorizontalPanel hpanel30;
@@ -76,19 +64,33 @@ private HorizontalPanel hpanel20;
 		this.flex1.setStyleName("tafeltabel");
 		this.flex1.setCellSpacing(0);
 		this.flex1.setCellPadding(0);
-		this.flex1.setBorderWidth(1);
+		this.flex1.setBorderWidth(0);
 		this.flex1.getFlexCellFormatter().setHeight(0, 0, "125px");
 		this.flex1.getFlexCellFormatter().setHeight(1, 0, "185px");
 		this.flex1.getFlexCellFormatter().setHeight(2, 0, "40px");
 		this.flex1.getFlexCellFormatter().setHeight(3, 0, "150px");
 		this.flex1.getFlexCellFormatter().setWidth(0, 0, "960px");
 		
+		this.flex10 = new FlexTable();
+		this.flex10.getFlexCellFormatter().setWidth(0, 0, "320px");
+		this.flex10.getFlexCellFormatter().setWidth(0, 1, "320px");
+		this.flex10.getFlexCellFormatter().setWidth(0, 2, "320px");
+		this.flex1.getFlexCellFormatter().setHorizontalAlignment(0, 1,
+				HasHorizontalAlignment.ALIGN_CENTER);
+
+		
+		
 		//eerste rij
 		this.hpanel00 = new HorizontalPanel();
 		this.lbl00 = new Label(String.valueOf(this.money));
 		this.lbl00.setStyleName("invulbox");
+		
+		this.lbl00.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_LEFT);
+		
 		this.html00 = new HTML("<h1>"+messages.winkeltje_title()+"</h1>");
 		this.html00.setStyleName("topkader");
+		
+		this.html00.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		
 		this.libo = new ListBox(false);
 		this.libo.setHeight("30px");
@@ -113,12 +115,18 @@ private HorizontalPanel hpanel20;
 		this.vpanel00.add(html00a);
 		this.vpanel00.add(libo);
 		
+		this.vpanel00.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
+		
 		
 		this.hpanel00.add(lbl00);
 		this.hpanel00.add(html00);
 		this.hpanel00.add(vpanel00);
-		this.hpanel00.setSpacing(30);;
-		this.flex1.setWidget(0, 0, hpanel00);
+		this.hpanel00.setSpacing(30);
+		
+		flex10.setWidget(0, 0, lbl00);
+		flex10.setWidget(0, 1, html00);
+		flex10.setWidget(0, 2, vpanel00);
+		this.flex1.setWidget(0, 0, flex10);
 		
 		//tweede rij
 		this.spanel10 = new ScrollPanel();

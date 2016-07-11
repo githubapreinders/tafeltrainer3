@@ -2,9 +2,17 @@ package afr.tafeltrainer3.shared;
 
 
 
+import java.util.ArrayList;
+
+import afr.tafeltrainer3.client.shop.Product;
+
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public interface SimpleServiceAsync  {
+	
+	public void emptyAndUpdateUser(ArrayList<Opgave> opgaven, int userid,int money,@SuppressWarnings("rawtypes") AsyncCallback callback);
+	
+	public void submitOpgavenSet(ArrayList<Opgave> opgaven, int userid,@SuppressWarnings("rawtypes") AsyncCallback callback);
 	
 	public void addParentsMailaddress(String username, String password, String emailaddress, boolean subscribed,@SuppressWarnings("rawtypes") AsyncCallback callback);
 	

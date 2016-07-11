@@ -6,13 +6,17 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLWarning;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+import afr.tafeltrainer3.client.pages.Tafeltrainer3Gui_desktop;
+import afr.tafeltrainer3.client.shop.Product;
 import afr.tafeltrainer3.shared.Opgave;
-import afr.tafeltrainer3.shared.Product;
 import afr.tafeltrainer3.shared.SuperUser;
 import afr.tafeltrainer3.shared.SurveyResult;
 import afr.tafeltrainer3.shared.TafelResult;
@@ -23,6 +27,8 @@ import com.google.appengine.api.utils.SystemProperty;
 
 public class MySQLAccess
 {
+	Logger logger = Logger.getLogger(MySQLAccess.class.getSimpleName());
+
 	private Connection connect;
 	private Statement statement = null;
 	private PreparedStatement preparedStatement = null;
@@ -39,6 +45,7 @@ public class MySQLAccess
 	private Connection getConn()
 	{
 
+		logger.log(Level.INFO, "Connection made");
 		connect = null;
 		String url = "";
 		String db = "";
@@ -93,6 +100,8 @@ public class MySQLAccess
 
 	public SuperUser findPw(String emailadress)
 	{
+		logger.log(Level.INFO, "findPw");
+
 		SuperUser su = null;
 		try
 		{
@@ -131,6 +140,8 @@ public class MySQLAccess
 
 	public boolean submitSurveyResult(SurveyResult surveyresult)
 	{
+		logger.log(Level.INFO, "submitSurveyResult");
+
 		boolean succes = false;
 		try
 		{
@@ -175,6 +186,8 @@ public class MySQLAccess
 
 	public boolean verifyMailadress(String code)
 	{
+		logger.log(Level.INFO, "verifyMailadress");
+
 		boolean returnvalue = false;
 		try
 		{
@@ -212,6 +225,8 @@ public class MySQLAccess
 
 	public ArrayList<User> getHouindegatenUsers(SuperUser superuser)
 	{
+		logger.log(Level.INFO, "getHouindegatenUsers");
+
 		ArrayList<User> users = new ArrayList<User>();
 		try
 		{
@@ -248,6 +263,8 @@ public class MySQLAccess
 
 	public ArrayList<SessionSummary> getSessionDates(int userid)
 	{
+		logger.log(Level.INFO, "getSessionDates");
+
 		ArrayList<SessionSummary> reports = new ArrayList<SessionSummary>();
 		connect = getConn();
 		try
@@ -283,6 +300,8 @@ public class MySQLAccess
 
 	public String getSessionDatesHtmlString(int userid)
 	{
+		logger.log(Level.INFO, "getSessionDatesHtmlString");
+
 		String message = "<br>";
 		ArrayList<SessionSummary> reports = getSessionDates(userid);
 		User u = getUserById(userid);
@@ -309,6 +328,8 @@ public class MySQLAccess
 
 	private ArrayList<String> getdates(ArrayList<SessionSummary> reports)
 	{
+		logger.log(Level.INFO, "getdates");
+
 		int maximum = 0;
 		ArrayList<String> returndates = new ArrayList<String>();
 		if (reports.size() == 0)
@@ -342,6 +363,8 @@ public class MySQLAccess
 	// TODO foutmelding nullpointerexception
 	public ArrayList<Product> getProducts(int userid)
 	{
+		logger.log(Level.INFO, "getProducts");
+
 		connect = getConn();
 		ArrayList<Product> productlist = new ArrayList<Product>();
 		productlist.add(new Product());
@@ -380,6 +403,8 @@ public class MySQLAccess
 
 	public void addProduct(int userid, Product product)
 	{
+		logger.log(Level.INFO, "addProduct");
+
 		connect = getConn();
 		try
 		{
@@ -413,6 +438,8 @@ public class MySQLAccess
 
 	public SuperUser retrieveSuperUser(String email, String password)
 	{
+		logger.log(Level.INFO, "retrieveSuperUser");
+
 		connect = getConn();
 		Encrypter encrypter = Encrypter.getInstance();
 		String passw = encrypter.encrypt(password);
@@ -451,6 +478,8 @@ public class MySQLAccess
 
 	public ArrayList<SuperUser> getSuperUserList()
 	{
+		logger.log(Level.INFO, "getSuperUserList");
+
 		connect = getConn();
 		ArrayList<SuperUser> resultusers = new ArrayList<SuperUser>();
 		try
@@ -486,6 +515,8 @@ public class MySQLAccess
 
 	public SuperUser addNewSuperUser(SuperUser superuser)
 	{
+		logger.log(Level.INFO, "addNewSuperUser");
+
 		connect = getConn();
 		SuperUser resultuser = null;
 		try
@@ -540,6 +571,7 @@ public class MySQLAccess
 
 	public void updateUserMetaData(int id)
 	{
+		logger.log(Level.INFO, "updateUserMetaData");
 		connect = getConn();
 
 		try
@@ -601,6 +633,8 @@ public class MySQLAccess
 
 	public ArrayList<User> getGroup(SuperUser superuser)
 	{
+		logger.log(Level.INFO, "getGroup");
+
 		connect = getConn();
 		ArrayList<User> users = new ArrayList<User>();
 		User resultuser = null;
@@ -643,6 +677,8 @@ public class MySQLAccess
 
 	public void deleteUser(User user)
 	{
+		logger.log(Level.INFO, "deleteUser");
+
 		connect = getConn();
 		try
 		{
@@ -682,6 +718,8 @@ public class MySQLAccess
 	// maakt een nieuwe user aan
 	public User addNewUser(User user)
 	{
+		logger.log(Level.INFO, "addNewUser");
+
 		int lastrow = -1;
 		connect = getConn();
 		try
@@ -754,6 +792,8 @@ public class MySQLAccess
 
 	public ArrayList<UserResults> getMetaData(SuperUser superuser)
 	{
+		logger.log(Level.INFO, "getMetaData");
+
 		ArrayList<UserResults> userresults = new ArrayList<UserResults>();
 		connect = getConn();
 		try
@@ -793,32 +833,33 @@ public class MySQLAccess
 		return userresults;
 	}
 
-	public String addParentsMailaddress(String username, String password, String parentsemail,boolean subscribe)
+	public String addParentsMailaddress(String username, String password, String parentsemail, boolean subscribe)
 	{
+		logger.log(Level.INFO, "addParentsMailaddress");
+
 		String result = "mail added";
 		connect = getConn();
 		try
 		{
-		if(subscribe == false)
-		{
-			parentsemail = "0";
-			result = "mail removed";
-		}
-		preparedStatement = connect.prepareStatement("update tafeltrainer.user set emailparent = ? where loginname = ?"
-				+ " and password = ? ");
-		preparedStatement.setString(1, parentsemail);
-		preparedStatement.setString(2, username);
-		preparedStatement.setString(3, password);
-		preparedStatement.executeUpdate();
-		preparedStatement.close();
-		connect.close();
-		}
-		catch(Exception e)
+			if (subscribe == false)
+			{
+				parentsemail = "0";
+				result = "mail removed";
+			}
+			preparedStatement = connect
+					.prepareStatement("update tafeltrainer.user set emailparent = ? where loginname = ?"
+							+ " and password = ? ");
+			preparedStatement.setString(1, parentsemail);
+			preparedStatement.setString(2, username);
+			preparedStatement.setString(3, password);
+			preparedStatement.executeUpdate();
+			preparedStatement.close();
+			connect.close();
+		} catch (Exception e)
 		{
 			e.printStackTrace();
 			result = "failure";
-		}
-		finally
+		} finally
 		{
 			if (connect != null)
 				try
@@ -831,20 +872,22 @@ public class MySQLAccess
 		}
 		return result;
 	}
-	
+
 	public UserResults getUserMetaData(User user)
 	{
+		logger.log(Level.INFO, "getUserMetaData");
+
 		UserResults ur = null;
 		connect = getConn();
 		try
 		{
-			preparedStatement = connect.prepareStatement("select * from tafeltrainer.summaryres"
-					+ " where userid =  " + user.getId() );
+			preparedStatement = connect.prepareStatement("select * from tafeltrainer.summaryres" + " where userid =  "
+					+ user.getId());
 			resultSet = preparedStatement.executeQuery();
-			
+
 			while (resultSet.next())
 			{
-				 ur = new UserResults(resultSet.getInt("userid"), resultSet.getString("username"),
+				ur = new UserResults(resultSet.getInt("userid"), resultSet.getString("username"),
 						resultSet.getString("familyname"), resultSet.getDouble("accuracy"),
 						resultSet.getInt("howmuchopgaven"), resultSet.getDouble("speed"));
 			}
@@ -868,9 +911,132 @@ public class MySQLAccess
 		return ur;
 	}
 
-	
-	
-	
+	public ArrayList<TafelResult> getTafelResults_3(int id)
+	{
+		logger.log(Level.INFO, "getTafelResults_2");
+		int counter = 0;
+		ArrayList<TafelResult> tafelresults = new ArrayList<TafelResult>();
+		try
+		{
+			connect = getConn();
+			preparedStatement = connect.prepareStatement("select factor2,iscorrect,userid from tafeltrainer.opgave "
+					+ " where userid =" + id);
+			resultSet = preparedStatement.executeQuery();
+
+			for (int factor = 2; factor < 20; factor++)
+			{
+
+				TafelResult tr = new TafelResult();
+				int score = 0;
+				int aantalopgaven = 0;
+				while (resultSet.next())
+				{
+					if (resultSet.getInt("factor2") == factor )
+					{
+						if(resultSet.getBoolean("iscorrect"))
+						{
+							score++;
+						}
+						aantalopgaven++;
+					}
+				}
+				double percentage = 0;
+				if (aantalopgaven > 0)
+				{
+					percentage = ((double) score * 100) / (double) aantalopgaven;
+					tr = new TafelResult(factor, (int) percentage, aantalopgaven);
+				} else
+				{
+					tr = new TafelResult(factor, 0, 0);
+				}
+				tafelresults.add(tr);
+				counter++;
+				resultSet.first();
+			}
+			connect.close();
+		} catch (Exception e)
+		{
+			System.out.println("fout in gettafelresults_3 " + counter);
+			e.printStackTrace();
+		} finally
+		{
+			if (connect != null)
+				try
+				{
+					connect.close();
+				} catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+		}
+
+		return tafelresults;
+	}
+
+	public ArrayList<TafelResult> getTafelResults_2(int id)
+	{
+		logger.log(Level.INFO, "getTafelResults_2");
+		int counter = 0;
+		ArrayList<TafelResult> tafelresults = new ArrayList<TafelResult>();
+		try
+		{
+			connect = getConn();
+			for (int factor = 2; factor < 20; factor++)
+			{
+				TafelResult tr = new TafelResult();
+				int score = 0;
+				int aantalopgaven = 0;
+				if (connect == null)
+				{
+					connect = getConn();
+					logger.log(Level.INFO, "getTafelResults_2 , connection reestablished");
+				}
+				preparedStatement = connect
+						.prepareStatement("select factor2,iscorrect,userid from tafeltrainer.opgave "
+								+ " where factor2 =" + factor + " and userid =" + id);
+				resultSet = preparedStatement.executeQuery();
+				while (resultSet.next())
+				{
+					if (resultSet.getBoolean("iscorrect"))
+					{
+						score++;
+					}
+					aantalopgaven++;
+				}
+				double percentage = 0;
+				if (aantalopgaven > 0)
+				{
+					percentage = ((double) score * 100) / (double) aantalopgaven;
+					tr = new TafelResult(factor, (int) percentage, aantalopgaven);
+				} else
+				{
+					tr = new TafelResult(factor, 0, 0);
+				}
+				tafelresults.add(tr);
+				preparedStatement.clearParameters();
+				counter++;
+
+				connect.close();
+			}
+		} catch (Exception e)
+		{
+			System.out.println("fout in gettafelresults_2 " + counter);
+			e.printStackTrace();
+		} finally
+		{
+			if (connect != null)
+				try
+				{
+					connect.close();
+				} catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+		}
+
+		return tafelresults;
+	}
+
 	/**
 	 * berekent het foutpercentage voor een bepaalde tafel en retourneert het
 	 * tafelresultaat-object
@@ -879,6 +1045,8 @@ public class MySQLAccess
 	 */
 	public TafelResult getTafelResults_1(int id, int factor)
 	{
+		logger.log(Level.INFO, "getTafelResults_1");
+
 		TafelResult tr = new TafelResult();
 		try
 		{
@@ -936,6 +1104,8 @@ public class MySQLAccess
 	 */
 	public ArrayList<TafelResult> getTafelResults(int id)
 	{
+		logger.log(Level.INFO, "getTafelResults");
+
 		connect = getConn();
 		ArrayList<TafelResult> tafelresultaten = new ArrayList<TafelResult>();
 		try
@@ -1001,6 +1171,8 @@ public class MySQLAccess
 	 */
 	public int getErrors(int id)
 	{
+		logger.log(Level.INFO, "getErrors");
+
 		connect = getConn();
 		int errors = 0;
 		try
@@ -1040,6 +1212,8 @@ public class MySQLAccess
 	 */
 	public double getAverageSpeed(int totalopgaven, int id)
 	{
+		logger.log(Level.INFO, "getAverageSpeed");
+
 		connect = getConn();
 		double averagespeed = 0;
 		try
@@ -1080,6 +1254,8 @@ public class MySQLAccess
 	 */
 	public int getHowMuchOpgaven(int id)
 	{
+		logger.log(Level.INFO, "getHowMuchOpgaven");
+
 		connect = getConn();
 		int result = 0;
 		try
@@ -1113,6 +1289,8 @@ public class MySQLAccess
 	// werkt gebruikersgegevens van een begeleider bij
 	public void updateSuperUser(SuperUser superuser, String oldemail)
 	{
+		logger.log(Level.INFO, "updateSuperUser");
+
 		connect = getConn();
 		Encrypter encrypt = Encrypter.getInstance();
 		String passw = encrypt.encrypt(superuser.getPassword());
@@ -1183,6 +1361,8 @@ public class MySQLAccess
 	 */
 	public void updateUser(User user)
 	{
+		logger.log(Level.INFO, "updateUser");
+
 		connect = getConn();
 		try
 		{
@@ -1219,6 +1399,8 @@ public class MySQLAccess
 
 	public void superuserUpdatesUser(User user)
 	{
+		logger.log(Level.INFO, "superuserUpdatesUser");
+
 		connect = getConn();
 
 		try
@@ -1263,6 +1445,8 @@ public class MySQLAccess
 
 	public void writeOpgave(Opgave opgave, int userid)
 	{
+		logger.log(Level.INFO, "writeOpgave");
+
 		connect = getConn();
 		try
 		{
@@ -1301,6 +1485,8 @@ public class MySQLAccess
 
 	public SessionSummary retrieveSession(int userid)
 	{
+		logger.log(Level.INFO, "retrieveSession");
+
 		SessionSummary session = new SessionSummary();
 		connect = getConn();
 		try
@@ -1370,11 +1556,15 @@ public class MySQLAccess
 
 	public void writeSession(SessionSummary session, int userid)
 	{
+		logger.log(Level.INFO, "writeSession");
+
 		connect = getConn();
 
 		if (flag == 0)
 			try
 			{
+				logger.log(Level.INFO, "Write Session; session:" + session.minutes + "m " + session.seconds + "s "
+						+ " userid: " + userid);
 				preparedStatement = connect
 						.prepareStatement("insert into tafeltrainer.sessie (id,starttijd,summary,hours,"
 								+ "minutes,seconds,howmuchopgaven,howmucherrors,accuracy,averagespeed,userid)	 "
@@ -1450,6 +1640,8 @@ public class MySQLAccess
 
 	public User getUser(String loginname, String password)
 	{
+		logger.log(Level.INFO, "getUser");
+
 		connect = getConn();
 		User resultuser = null;
 		try
@@ -1488,6 +1680,8 @@ public class MySQLAccess
 
 	public ArrayList<User> getUserEmailList()
 	{
+		logger.log(Level.INFO, "getUserEmailList");
+
 		ArrayList<User> users = new ArrayList<User>();
 		connect = getConn();
 		try
@@ -1532,6 +1726,8 @@ public class MySQLAccess
 
 	public User getUserById(int id)
 	{
+		logger.log(Level.INFO, "getUserById");
+
 		connect = getConn();
 		User resultuser = null;
 		try
@@ -1588,6 +1784,135 @@ public class MySQLAccess
 		BigDecimal bd = new BigDecimal(value);
 		bd = bd.setScale(places, BigDecimal.ROUND_HALF_UP);
 		return bd.doubleValue();
+	}
+
+	public void submitOpgavenSet(ArrayList<Opgave> opgaven, int userid)
+	{
+		logger.log(Level.INFO, "submitOpgavenSet");
+
+		try
+		{
+			connect = getConn();
+			preparedStatement = connect.prepareStatement("insert into tafeltrainer.opgave (id, factor1, factor2, "
+					+ "antwoord, useranswer,iscorrect, time,userid) values (default,?,?,?,?,?,?,?)");
+			for (int i = 0; i < opgaven.size(); i++)
+			{
+				Opgave opgave = opgaven.get(i);
+				preparedStatement.setInt(1, opgave.getFactor1());
+				preparedStatement.setInt(2, opgave.getFactor2());
+				preparedStatement.setInt(3, opgave.getAntwoord());
+				preparedStatement.setInt(4, opgave.getUseranswer());
+				preparedStatement.setBoolean(5, opgave.iscorrect);
+				preparedStatement.setDouble(6, opgave.getTime());
+				preparedStatement.setInt(7, userid);
+				preparedStatement.addBatch();
+			}
+			preparedStatement.executeBatch();
+			preparedStatement.close();
+			connect.close();
+
+		}
+
+		catch (Exception e)
+		{
+			System.out.println("fout in submitOpgavenSet");
+			e.printStackTrace();
+		} finally
+		{
+			if (connect != null)
+				try
+				{
+					connect.close();
+				} catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+		}
+
+	}
+
+	public void emptyAndUpdateUser(ArrayList<Opgave> opgaven, SessionSummary session, int userid, int money)
+	{
+		logger.log(Level.INFO, "emptyAndUpdateUser");
+
+		try
+		{
+			logger.log(Level.INFO, "emptyAndUpdateUser; session:" + session.minutes + "m " + session.seconds + "s "
+					+ " userid: " + userid + " money " + money);
+			connect = getConn();
+			preparedStatement = connect.prepareStatement("insert into tafeltrainer.opgave (id, factor1, factor2, "
+					+ "antwoord, useranswer,iscorrect, time,userid) values (default,?,?,?,?,?,?,?)");
+			for (int i = 0; i < opgaven.size(); i++)
+			{
+				Opgave opgave = opgaven.get(i);
+				preparedStatement.setInt(1, opgave.getFactor1());
+				preparedStatement.setInt(2, opgave.getFactor2());
+				preparedStatement.setInt(3, opgave.getAntwoord());
+				preparedStatement.setInt(4, opgave.getUseranswer());
+				preparedStatement.setBoolean(5, opgave.iscorrect);
+				preparedStatement.setDouble(6, opgave.getTime());
+				preparedStatement.setInt(7, userid);
+				preparedStatement.addBatch();
+			}
+			preparedStatement.executeBatch();
+
+			if (flag == 1)
+			{
+				preparedStatement = connect
+						.prepareStatement("update tafeltrainer.sessie set summary = ?,hours = ?, minutes = ?,"
+								+ "seconds = ?, howmuchopgaven = ?, howmucherrors = ?, accuracy = ?,"
+								+ "averagespeed = ?" + "order by id desc limit 1");
+				preparedStatement.setString(1, session.toString());
+				preparedStatement.setInt(2, session.hours);
+				preparedStatement.setInt(3, session.minutes);
+				preparedStatement.setInt(4, session.seconds);
+				preparedStatement.setInt(5, (int) session.howMuchOpgaven);
+				preparedStatement.setInt(6, (int) session.fouten);
+				preparedStatement.setDouble(7, session.accuracy);
+				preparedStatement.setDouble(8, session.averageSpeed);
+				preparedStatement.executeUpdate();
+			}
+
+			if (flag == 0)
+			{
+				preparedStatement = connect
+						.prepareStatement("insert into tafeltrainer.sessie (id,starttijd,summary,hours,"
+								+ "minutes,seconds,howmuchopgaven,howmucherrors,accuracy,averagespeed,userid)	 "
+								+ "values (default,?,?,?,?,?,?,?,?,?,?)");
+				preparedStatement.setTimestamp(1, session.timestamp);
+				preparedStatement.setString(2, session.toString());
+				preparedStatement.setInt(3, session.hours);
+				preparedStatement.setInt(4, session.minutes);
+				preparedStatement.setInt(5, session.seconds);
+				preparedStatement.setInt(6, (int) session.howMuchOpgaven);
+				preparedStatement.setInt(7, (int) session.fouten);
+				preparedStatement.setDouble(8, session.accuracy);
+				preparedStatement.setDouble(9, session.averageSpeed);
+				preparedStatement.setInt(10, userid);
+				preparedStatement.executeUpdate();
+				flag = 1;
+			}
+			preparedStatement = connect.prepareStatement("update tafeltrainer.user set money=? where id = " + userid);
+			preparedStatement.setInt(1, money);
+			preparedStatement.executeUpdate();
+			preparedStatement.close();
+
+		} catch (Exception e)
+		{
+			System.out.println("fout in emptyAndUpdateUser");
+			e.printStackTrace();
+		} finally
+		{
+			if (connect != null)
+				try
+				{
+					connect.close();
+				} catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+		}
+
 	}
 
 }

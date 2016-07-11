@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import afr.tafeltrainer3.client.events.DataEvent;
 import afr.tafeltrainer3.client.events.EventAddParentsMailaddress;
@@ -17,9 +19,9 @@ import afr.tafeltrainer3.client.events.EventUserFeedback;
 import afr.tafeltrainer3.client.events.EventUserNew;
 import afr.tafeltrainer3.client.events.EventUserRetrieved;
 import afr.tafeltrainer3.client.events.EventVerifyMail;
+import afr.tafeltrainer3.client.shop.Product;
 import afr.tafeltrainer3.shared.FeedbackContainer;
 import afr.tafeltrainer3.shared.Opgave;
-import afr.tafeltrainer3.shared.Product;
 import afr.tafeltrainer3.shared.SimpleService;
 import afr.tafeltrainer3.shared.SuperUser;
 import afr.tafeltrainer3.shared.SurveyResult;
@@ -31,6 +33,8 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 public class ServerImpl extends RemoteServiceServlet implements SimpleService
 {
 
+	Logger logger = Logger.getLogger(ServerImpl.class.getSimpleName());
+	
 	private static final long serialVersionUID = -8441122045657762850L;
 
 	private SessionSummary session;
@@ -42,9 +46,14 @@ public class ServerImpl extends RemoteServiceServlet implements SimpleService
 
 	}
 
+	
+	
+	
 	@Override
 	public DataEvent addParentsMailaddress(String username, String password, String emailaddress, boolean subscribed)
 	{
+		logger.log(Level.INFO,"addParentsMailaddress");
+
 	String result = "";
 	EventAddParentsMailaddress  eapma = new EventAddParentsMailaddress();
 	try
@@ -66,6 +75,7 @@ public class ServerImpl extends RemoteServiceServlet implements SimpleService
 	@Override
 	public void submitSurveyResult(SurveyResult surveyresult)
 	{
+		logger.log(Level.INFO,"submitSurveyResult");	
 		try
 		{
 			boolean succes = mySQLAccess.submitSurveyResult(surveyresult);
@@ -79,6 +89,8 @@ public class ServerImpl extends RemoteServiceServlet implements SimpleService
 	@Override
 	public void sendPw(String emailadress)
 	{
+		logger.log(Level.INFO,"sendPw");	
+
 		SuperUser su = mySQLAccess.findPw(emailadress);
 		SendMessage me = new SendMessage(su.getName(), su.getEmail(), su.getPassword());
 	}
@@ -86,6 +98,8 @@ public class ServerImpl extends RemoteServiceServlet implements SimpleService
 	@Override
 	public void sendAnotherVerificationMail(SuperUser superuser)
 	{
+		logger.log(Level.INFO,"sendAnotherVerificationMail");	
+
 		Encrypter encrypter = Encrypter.getInstance();
 		String verificationcode = encrypter.encrypt(superuser.getName());
 		String passw = encrypter.encrypt(superuser.getPassword());
@@ -99,6 +113,8 @@ public class ServerImpl extends RemoteServiceServlet implements SimpleService
 	@Override
 	public DataEvent verifyMailadress(String parameter)
 	{
+		logger.log(Level.INFO,"verifyMailadress");	
+
 		String returnstring = "Helaas, verificatie was niet mogelijk...";
 		EventVerifyMail evm = new EventVerifyMail();
 		try
@@ -117,6 +133,8 @@ public class ServerImpl extends RemoteServiceServlet implements SimpleService
 	@Override
 	public DataEvent getSuperuserFeedback(int userid)
 	{
+		logger.log(Level.INFO,"getSuperuserFeedback");	
+
 		EventSuperuserFeedback esuf = new EventSuperuserFeedback();
 		try
 		{
@@ -148,18 +166,22 @@ public class ServerImpl extends RemoteServiceServlet implements SimpleService
 
 	@Override
 	public DataEvent getUserFeedback(int userid)
+	
 	{
+		logger.log(Level.INFO,"getUserFeedback");	
+
 		EventUserFeedback euf = new EventUserFeedback();
 		try
 		{
-			ArrayList<TafelResult> tafelresultaten = new ArrayList<TafelResult>();
-			int factor = 2;
-			while (factor < 20)
-			{
-				TafelResult tr = mySQLAccess.getTafelResults_1(userid, factor);
-				tafelresultaten.add(tr);
-				factor++;
-			}
+//			ArrayList<TafelResult> tafelresultaten = new ArrayList<TafelResult>();
+//			int factor = 2;
+//			while (factor < 20)
+//			{
+//				TafelResult tr = mySQLAccess.getTafelResults_1(userid, factor);
+//				tafelresultaten.add(tr);
+//				factor++;
+//			}
+			ArrayList<TafelResult> tafelresultaten = mySQLAccess.getTafelResults_3(userid);
 			SessionSummary pastsession = mySQLAccess.retrieveSession(userid);
 			Date thisdate = new Date(pastsession.timestamp.getTime());
 			String pastthreesessions = mySQLAccess.getSessionDatesHtmlString(userid);
@@ -174,6 +196,7 @@ public class ServerImpl extends RemoteServiceServlet implements SimpleService
 		} catch (Exception e)
 		{
 			e.printStackTrace();
+			System.out.println("Serverimp getUserFeedback");
 		}
 
 		return euf;
@@ -182,12 +205,16 @@ public class ServerImpl extends RemoteServiceServlet implements SimpleService
 	@Override
 	public void sendMail(SuperUser superuser)
 	{
+		logger.log(Level.INFO,"sendMail");	
+
 		SendMessage m = new SendMessage(superuser);
 	}
 
 	@Override
 	public void superuserUpdatesUser(User user)
 	{
+		logger.log(Level.INFO,"superuserUpdatesUser");	
+
 		try
 		{
 			mySQLAccess.superuserUpdatesUser(user);
@@ -200,6 +227,8 @@ public class ServerImpl extends RemoteServiceServlet implements SimpleService
 	@Override
 	public void updateSuperUser(SuperUser superuser, String oldemail)
 	{
+		logger.log(Level.INFO,"updateSuperUser");	
+	
 		try
 		{
 			mySQLAccess.updateSuperUser(superuser, oldemail);
@@ -213,6 +242,8 @@ public class ServerImpl extends RemoteServiceServlet implements SimpleService
 	@Override
 	public DataEvent getProducts(int userid)
 	{
+		logger.log(Level.INFO,"getProducts");	
+
 		EventProductsRetrieved epr = new EventProductsRetrieved();
 		try
 		{
@@ -229,6 +260,8 @@ public class ServerImpl extends RemoteServiceServlet implements SimpleService
 	@Override
 	public void addProduct(int userid, Product product)
 	{
+		logger.log(Level.INFO,"addProduct");	
+
 		try
 		{
 			mySQLAccess.addProduct(userid, product);
@@ -242,6 +275,8 @@ public class ServerImpl extends RemoteServiceServlet implements SimpleService
 	@Override
 	public DataEvent retrieveSuperUser(String loginname, String passw)
 	{
+		logger.log(Level.INFO,"retrieveSuperUser");	
+
 		EventSuperUserRetrieved ersu = new EventSuperUserRetrieved();
 		try
 		{
@@ -259,6 +294,8 @@ public class ServerImpl extends RemoteServiceServlet implements SimpleService
 	@Override
 	public DataEvent addNewSuperUser(SuperUser superuser)
 	{
+		logger.log(Level.INFO,"addNewSuperUser");	
+
 		EventAddSuperUser easu = new EventAddSuperUser();
 		Encrypter encrypter = Encrypter.getInstance();
 		String verificationcode = encrypter.encrypt(superuser.getName());
@@ -283,6 +320,8 @@ public class ServerImpl extends RemoteServiceServlet implements SimpleService
 	// haalt de resultaten groepsgegevens uit de db
 	public DataEvent getGroupResults(SuperUser superuser)
 	{
+		logger.log(Level.INFO,"getGroupResults");	
+
 		EventGetGroupResults eggr = new EventGetGroupResults();
 		try
 		{
@@ -298,6 +337,7 @@ public class ServerImpl extends RemoteServiceServlet implements SimpleService
 	@Override
 	public DataEvent getGroup(SuperUser superuser)
 	{
+		logger.log(Level.INFO,"getGroup");	
 
 		EventGetGroup egg = new EventGetGroup();
 		try
@@ -315,6 +355,8 @@ public class ServerImpl extends RemoteServiceServlet implements SimpleService
 	@Override
 	public DataEvent addNewUser(User user)
 	{
+		logger.log(Level.INFO,"addNewUser");	
+
 		EventUserNew eun = new EventUserNew();
 		try
 		{
@@ -332,7 +374,9 @@ public class ServerImpl extends RemoteServiceServlet implements SimpleService
 	@Override
 	public DataEvent retrieveUser(String loginname, String passw)
 	{
+		logger.log(Level.INFO,"retrieveUser");	
 
+		
 		EventUserRetrieved eur = new EventUserRetrieved();
 		try
 		{
@@ -351,6 +395,8 @@ public class ServerImpl extends RemoteServiceServlet implements SimpleService
 	@Override
 	public void deleteUser(User user)
 	{
+		logger.log(Level.INFO,"deleteUser");	
+
 		if (user != null)
 		{
 			mySQLAccess.deleteUser(user);
@@ -361,14 +407,17 @@ public class ServerImpl extends RemoteServiceServlet implements SimpleService
 	@Override
 	public FeedbackContainer getFeedbackData(int id)
 	{
-		ArrayList<TafelResult> tafelresultaten = new ArrayList<TafelResult>();
-		int factor = 2;
-		while (factor < 20)
-		{
-			TafelResult tr = mySQLAccess.getTafelResults_1(id, factor);
-			tafelresultaten.add(tr);
-			factor++;
-		}
+		logger.log(Level.INFO,"getFeedbackData");	
+
+		ArrayList<TafelResult> tafelresultaten = mySQLAccess.getTafelResults_3(id);
+//		ArrayList<TafelResult> tafelresultaten = new ArrayList<TafelResult>();
+//		int factor = 2;
+//		while (factor < 20)
+//		{
+//			TafelResult tr = mySQLAccess.getTafelResults_1(id, factor);
+//			tafelresultaten.add(tr);
+//			factor++;
+//		}
 		SessionSummary pastsession = mySQLAccess.retrieveSession(id);
 		Date thisdate = new Date(pastsession.timestamp.getTime());
 		String pastthreesessions = mySQLAccess.getSessionDatesHtmlString(id);
@@ -385,6 +434,8 @@ public class ServerImpl extends RemoteServiceServlet implements SimpleService
 	@Override
 	public User getUser(String loginname, String passw)
 	{
+		logger.log(Level.INFO,"getUser");	
+	
 		try
 		{
 			User user = mySQLAccess.getUser(loginname, passw);
@@ -400,6 +451,8 @@ public class ServerImpl extends RemoteServiceServlet implements SimpleService
 	@Override
 	public void updateUser(User user)
 	{
+		logger.log(Level.INFO,"updateUser");	
+	
 		if (user != null)
 		{
 			mySQLAccess.updateUser(user);
@@ -410,6 +463,8 @@ public class ServerImpl extends RemoteServiceServlet implements SimpleService
 	@Override
 	public void submitQuestion(Opgave opg, int userid)
 	{
+		logger.log(Level.INFO,"submitQuestion");	
+
 		if (opg != null)
 		{
 			mySQLAccess.writeOpgave(opg, userid);
@@ -426,10 +481,58 @@ public class ServerImpl extends RemoteServiceServlet implements SimpleService
 		return;
 	}
 
+	
+	@Override
+	public void submitOpgavenSet(ArrayList<Opgave> opgaven, int userid)
+	{
+		logger.log(Level.INFO,"submitOpgavenSet");	
+
+		try
+		{
+			mySQLAccess.submitOpgavenSet(opgaven, userid);
+			for(Opgave opg : opgaven)
+			{
+				session.addOpgave();
+				session.setAccuracy(opg.antwoord == opg.useranswer);
+				session.setAvgSpeed(opg.getTime());
+				session.setSessionLength();
+			}
+			mySQLAccess.writeSession(session, userid);
+			mySQLAccess.updateUserMetaData(userid);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	public void emptyAndUpdateUser(ArrayList<Opgave> opgaven, int userid, int money)
+	{
+		logger.log(Level.INFO,"emptyAndUpdateUser");	
+		if(session != null)
+		{
+		for(Opgave opg : opgaven)
+		{
+			session.addOpgave();
+			session.setAccuracy(opg.antwoord == opg.useranswer);
+			session.setAvgSpeed(opg.getTime());
+			session.setSessionLength();
+		}
+		mySQLAccess.emptyAndUpdateUser(opgaven,session,userid, money);
+		}
+		session = new SessionSummary();
+		mySQLAccess.flag = 0;
+	}
+	
+	
+	
+	
 	// maakt een nieuwe sessie aan voor een user
 	@Override
 	public void startQuiz()
 	{
+		logger.log(Level.INFO,"startQuiz");	
+
 		session = new SessionSummary();
 		return;
 	}
@@ -438,6 +541,8 @@ public class ServerImpl extends RemoteServiceServlet implements SimpleService
 	@Override
 	public void stopQuiz()
 	{
+		logger.log(Level.INFO,"stopQuiz");	
+
 		try
 		{
 			mySQLAccess.flag = 0;
@@ -448,4 +553,5 @@ public class ServerImpl extends RemoteServiceServlet implements SimpleService
 		return;
 	}
 
+	
 }

@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import afr.tafeltrainer3.client.ProductIO;
-import afr.tafeltrainer3.shared.Product;
-
 public class Prodlijst implements Productlists 
 {
 

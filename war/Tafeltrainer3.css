@@ -53,7 +53,7 @@ body
 
 #bodydemobegeleider
 {
-	background: url(/images/tafeltabel2.png);
+	background: url(/images/tafeltabel2c.svg);
 }
 
 .admininvulbox
@@ -534,7 +534,7 @@ p
 
 .popup2
 {
-	background-image: url('/images/tafeltabel2.png');
+	background-image: url('/images/tafeltabel2c.svg');
 	margin-right : auto;
 	margin-left : auto;
 	margin-top : 10px;
@@ -648,7 +648,7 @@ p
 }
     
 .tafeltabel {
-	background-image: url('/images/tafeltabel.png');
+	background-image: url('/images/tafeltabel2c.svg');
 	margin-right : auto;
 	margin-left : auto;
 	margin-top : 2px;
@@ -665,7 +665,7 @@ p
 	color: white;
 	text-shadow:1px 1px black;
     box-shadow: 0 0 5px #333; 
-	background:url('/images/tafeltabel.png');
+	background:url('/images/tafeltabel2c.svg');
 	border-radius : 10px;
 	padding : 3px;
 }
@@ -763,9 +763,12 @@ of via het DOM. De punt gebruik je wanneer
 je een stylenaam hebt gezet direct via "component.setStyleName"*/
 .topkader
 {
+	/*
 	margin-left: auto;
 	margin-right: auto;
-	background-image: url('/images/tafeltabel.png');
+	*/
+	background-image: url('/images/tafeltabel2.png');
+	background-size:100% 100%;
 	width : 400px;
 	height : 40px;
 	border : 5px  solid #b5f7f9;
@@ -778,7 +781,7 @@ centreert het hele bouwwerk
 {
 	margin-left: auto;
 	margin-right: auto;
-	background-image: url('/images/tafeltabel.png');
+	background-image: url('/images/tafeltabel2c.svg');
 	width : 400px;
 	height : 35px;
 	border : 5px  solid #b5f7f9;
@@ -802,7 +805,7 @@ centreert het hele bouwwerk
 .vpanelpage3
 {
 	
-	background-image: url('/images/tafeltabel.png');
+	background-image: url('/images/tafeltabel2c.svg');
 	background-color : lime;
 	width:800px;
 	heigth : 200px;

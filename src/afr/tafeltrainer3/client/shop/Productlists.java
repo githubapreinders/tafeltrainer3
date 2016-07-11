@@ -1,7 +1,6 @@
 package afr.tafeltrainer3.client.shop;
 
 import java.util.ArrayList;
-import afr.tafeltrainer3.shared.Product;
 
 public interface Productlists
 {

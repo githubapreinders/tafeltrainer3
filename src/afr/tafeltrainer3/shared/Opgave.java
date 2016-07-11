@@ -24,12 +24,14 @@ public class Opgave implements Serializable{
 	double time;
 	public static int vorigevorigefactor1;
 	public static int vorigefactor1;
+	public static Opgave vorigeopgave = new Opgave();
+	
 	
 	public Opgave()
 	{
 		this.id=opgavenid;
-		this.factor1=getRandomDigit(10);
-		this.factor2=getRandomDigit(10);
+			this.factor1=getRandomDigit(10);
+			this.factor2=getRandomDigit(10);
 		this.antwoord = getAntwoord(this.factor1,this.factor2);
 		this.useranswer=-1;
 		this.time = -1;
@@ -44,25 +46,38 @@ public class Opgave implements Serializable{
 		if (opgavesoort.isX11())
 		{
 			this.id=opgavenid;
-			this.factor1 = getRandomDigit(20);
-			this.factor2 = getRandomDigit(20);
+			
+			do
+			{
+				this.factor1 = getSimpleRandomDigit(20);
+				this.factor2 = getSimpleRandomDigit(20);
+			}
+			while(vorigeopgave.factor1 == this.factor1 && vorigeopgave.factor2 == this.factor2);
+			
 			this.antwoord = getAntwoord(this.factor1, this.factor2);
 			this.useranswer = -1;
 			this.iscorrect=false;
 			this.time = -1;
 			opgavenid++;
+			vorigeopgave = this;
 		}
 		//tafels tm 9
 		if(opgavesoort.isXalle())
 		{
 			this.id=opgavenid;
-			this.factor1=getRandomDigit(10);
-			this.factor2=getRandomDigit(10);
+			//We maken een andere som en zorgen ervoor dat ie ongelijk is aan de vorige
+			do
+			{
+				this.factor1=getSimpleRandomDigit(10);
+				this.factor2=getSimpleRandomDigit(10);
+			}
+			while (vorigeopgave.factor1 == this.factor1 || vorigeopgave.factor2 == this.factor2);
 			this.antwoord = getAntwoord(this.factor1,this.factor2);
 			this.useranswer=-1;
 			this.iscorrect=false;
 			this.time = -1;
 			opgavenid++;
+			vorigeopgave = this;
 		}
 		//opgegeven tafels,checkboxen worden hier nagelopen
 		if(!opgavesoort.isXalle()&&!opgavesoort.isX11())
@@ -117,6 +132,12 @@ public class Opgave implements Serializable{
 	}
 	
 	
+	private int getSimpleRandomDigit(int howmuch)
+	{
+		Random ran = new Random();
+		return 1 + ran.nextInt(howmuch);
+		
+	}
 	
 	
 	private int getRandomDigit(int howmuch) {
@@ -127,6 +148,7 @@ public class Opgave implements Serializable{
 			digit = 1 + ran.nextInt(howmuch);
 		}
 		while(digit == vorigefactor1 || digit == vorigevorigefactor1);
+		
 		vorigevorigefactor1 = vorigefactor1;//om duplicaten te voorkomen
 		vorigefactor1 = digit;
 		return  digit;
